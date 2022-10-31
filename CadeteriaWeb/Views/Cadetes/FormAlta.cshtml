@@ -1,0 +1,25 @@
+ @model CadeteriaWeb.ViewModels.CadetesViewModels
+<div>
+    <h3>Subida de Cadetes</h3>
+
+    <h5>Ingrese los datos del cadete</h5>
+   
+
+
+<form  method="post">
+    <label class="form-label" asp-for="@Model.Nombre"></label>
+    <input class="form-control" asp-for="@Model.Nombre" /> <br />
+    <span class="form-control" asp-validation-for="@Model.Nombre" ></span>
+
+    <label class="form-label" asp-for="@Model.Direccion"></label>
+    <input class="form-control" asp-for="@Model.Direccion"/>  <br />
+    <span class="form-control" asp-validation-for="@Model.Direccion" ></span>
+
+    <label class="form-label" asp-for="@Model.Telefono"></label>
+    <input class="form-control" asp-for="@Model.Telefono" /> <br/>
+    <span class="form-control" asp-validation-for="@Model.Telefono" ></span>
+    <button  class="btn btn-primary">Enviar</button>
+</form>
+
+</div>
+@section Scripts { <partial name="_ValidationScriptsPartial" /> } 

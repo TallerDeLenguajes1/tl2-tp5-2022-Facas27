@@ -1,0 +1,57 @@
+@model CadeteriaWeb.ViewModels.PedidosViewModels
+ @{
+    CadeteriaWeb.Models.CadetesModels.CadetesRepositorio CadeRepo = new CadeteriaWeb.Models.CadetesModels.CadetesRepositorio();
+ }
+
+<div>
+    <h3>Editor de Pedidos</h3>
+
+   
+
+
+<form  method="post">
+    <label class="form-label" asp-for="@Model.Obs"></label>
+    <input class="form-control" asp-for="@Model.Obs" value="@Model.Obs"/> <br />
+    <span class="form-control" asp-validation-for="@Model.Obs" ></span>
+
+    <label class="form-label" asp-for="@Model.Cliente"></label>
+    <input class="form-control" asp-for="@Model.Cliente" value="@Model.Cliente"/>  <br />
+    <span class="form-control" asp-validation-for="@Model.Cliente" ></span>
+
+    <label class="form-label" asp-for="@Model.Cadete"></label>
+    <select  asp-for="@Model.Cadete" >
+        @foreach (var item in CadeRepo.TodosCadetes())
+        {
+            if (item.ID == Model.Cadete)
+            {
+              <option value="@item.ID" selected>@item.Nombre</option>   
+            }else
+            {
+                <option value="@item.ID">@item.Nombre</option>
+            }
+            
+        }
+    </select><br/>
+    <span class="form-control" asp-validation-for="@Model.Cadete" ></span>
+    <label class="form-label" asp-for="@Model.Estado"></label>
+    <select  asp-for="@Model.Estado" >
+        @{
+            if (Model.Estado)
+            {
+                <option value="true" selected>En camino</option>
+                <option value="false">Entregado</option>
+                  
+            }else
+            {
+                <option value="false" selected>Entregado</option>
+                <option value="true">En camino</option>  
+            }
+        }
+
+    </select>
+    
+    <button  class="btn btn-primary">Enviar</button>
+</form>
+
+</div>
+@section Scripts { <partial name="_ValidationScriptsPartial" /> } 

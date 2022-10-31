@@ -1,0 +1,88 @@
+
+@model List<CadeteriaWeb.Models.PedidosModels.Pedidos>
+@{CadeteriaWeb.Models.CadetesModels.CadetesRepositorio CadeRepo  = new CadeteriaWeb.Models.CadetesModels.CadetesRepositorio();}    
+<style>table {
+  border-collapse: collapse;
+  border: 1px solid black;
+  text-align: center;
+	vertical-align: middle;
+}
+
+th, td {
+  border: 1px solid black;
+  padding: 8px;
+
+}
+thead th {
+  width: 25%;
+}
+thead {
+  background-color: #333;
+  color: white;
+  font-size: 0.875rem;
+	text-transform: uppercase;
+	letter-spacing: 2%;
+}
+tbody tr:nth-child(odd) {
+  background-color: #fff;
+}
+
+tbody tr:nth-child(even) {
+  background-color: #eee;
+}
+tbody th {
+  background-color: #36c;
+  color: #fff;
+  text-align: left;
+}
+tbody tr:nth-child(even) th {
+  background-color: #25c;
+}</style>
+
+<table >
+    <thead>
+        <tr>
+            <th> Observacion </th>
+            <th> Cliente </th>
+            <th> Cadete </th>
+            <th>Estado</th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        
+            @foreach (var item in Model)
+            {
+            <tr>
+                <td> @item.Obs</td>
+                <td> @item.Cliente </td>
+                @{
+                  if (CadeRepo.CadetePorID(@item.Cadete) == null)
+                {
+                    <td>No existe el cadete</td>
+                }else
+                {
+                    <td>@CadeRepo.CadetePorID(@item.Cadete).Nombre</td>
+                }
+                  if (@item.Estado)
+                  {
+                    <td>En camino</td>
+                  }else
+                  {
+                     <td>Entregado</td>
+                  }
+                  
+                } 
+                
+                
+                <td><a  asp-controller="Pedidos" asp-action="EditarPedidos" asp-route-id="@item.Nro">Editar</a></td>
+            </tr>    
+            }
+
+            
+    </tbody>
+    <a  asp-controller="Pedidos" asp-action="MostrarPedidos" style="display: flex;
+                                                                   align-items: center;
+                                                                   justify-content: center;" >Refrescar </a>
+    
+</table>
