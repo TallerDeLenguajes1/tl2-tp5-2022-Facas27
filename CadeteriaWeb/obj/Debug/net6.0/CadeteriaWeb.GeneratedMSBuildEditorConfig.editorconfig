@@ -19,10 +19,6 @@ build_property._RazorSourceGeneratorDebug =
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQ2FkZXRlc1xFZGl0YXJDYWRldGVzLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/facun/OneDrive/Escritorio/TP5/tl2-tp5-2022-Facas27/CadeteriaWeb/Views/Cadetes/EliminarCadetes.cshtml]
-build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQ2FkZXRlc1xFbGltaW5hckNhZGV0ZXMuY3NodG1s
-build_metadata.AdditionalFiles.CssScope = 
-
 [C:/Users/facun/OneDrive/Escritorio/TP5/tl2-tp5-2022-Facas27/CadeteriaWeb/Views/Cadetes/FormAlta.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQ2FkZXRlc1xGb3JtQWx0YS5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
@@ -45,10 +41,6 @@ build_metadata.AdditionalFiles.CssScope =
 
 [C:/Users/facun/OneDrive/Escritorio/TP5/tl2-tp5-2022-Facas27/CadeteriaWeb/Views/Pedidos/EditarPedidos.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUGVkaWRvc1xFZGl0YXJQZWRpZG9zLmNzaHRtbA==
-build_metadata.AdditionalFiles.CssScope = 
-
-[C:/Users/facun/OneDrive/Escritorio/TP5/tl2-tp5-2022-Facas27/CadeteriaWeb/Views/Pedidos/EliminarPedidos.cshtml]
-build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUGVkaWRvc1xFbGltaW5hclBlZGlkb3MuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
 [C:/Users/facun/OneDrive/Escritorio/TP5/tl2-tp5-2022-Facas27/CadeteriaWeb/Views/Pedidos/FormAlta.cshtml]

@@ -45,6 +45,7 @@ tbody tr:nth-child(even) th {
             <th> Direccion </th>
             <th> Telefono </th>
             <th></th>
+            <th></th>
         </tr>
     </thead>
     <tbody>
@@ -58,6 +59,7 @@ tbody tr:nth-child(even) th {
                 <td> @item.Telefono </td>
                 
                 <td><a  asp-controller="Cadetes" asp-action="EditarCadetes" asp-route-id="@item.ID">Editar</a></td>
+                <td><a  asp-controller="Cadetes" asp-action="EliminarCadetes" asp-route-id="@item.ID">Eliminar</a></td>
             </tr>    
             }
 

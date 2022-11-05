@@ -51,7 +51,8 @@ namespace CadeteriaWeb.Controllers
         public IActionResult EliminarCadetes(){
             return View();
         }
-        [HttpPost]
+        [HttpGet]
+        [Route("/Cadetes/EliminarCadetes/{id}")]
         public IActionResult EliminarCadetes(string ID){
             CadetesRepositorio CadeRepo = new CadetesRepositorio();
             if (CadeRepo.EliminarCadetes(ID))

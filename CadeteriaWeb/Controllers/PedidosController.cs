@@ -55,10 +55,11 @@ namespace CadeteriaWeb.Controllers
         public IActionResult EliminarPedidos(){
             return View();
         }
-        [HttpPost]
-        public IActionResult EliminarPedidos(string ID){
-            PedidosRepositorio CadeRepo = new PedidosRepositorio();
-            if (CadeRepo.EliminarPedido(ID))
+        [HttpGet]
+        [Route("/Pedidos/EliminarPedidos/{nro}")]
+        public IActionResult EliminarPedidos(string nro){
+            PedidosRepositorio PediRepo = new PedidosRepositorio();
+            if (PediRepo.EliminarPedido(nro))
             {
                 ViewData["Resultado"] = "Eliminado con exito";
                 return View("Index");
