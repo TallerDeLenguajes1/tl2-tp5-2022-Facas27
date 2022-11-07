@@ -2,26 +2,30 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Microsoft.Data;
+using Microsoft.Data.Sqlite;
+
 
 namespace CadeteriaWeb.Models.CadetesModels
 {
     public class CadetesRepositorio:ICadetes
     {
+        
       private List<Cadetes> ListaCadetes {get;set;}
+      static public SqliteConnection conexion = new SqliteConnection($"Filename=CadeteriaWeb.db");
       
       
 
       public CadetesRepositorio(){
         ListaCadetes = new List<Cadetes>();
-        foreach (string cadete in File.ReadAllLines(@"Cadeteria.csv"))
-            {
-                if (cadete != "")
-                {
-                     string[]datos = cadete.Split(";");
-                                                               //ID,    Nombre    Direc  Telefono
-                    ListaCadetes.Add(new Cadetes(Int32.Parse(datos[0]),datos[1],datos[2], datos[3]));
-                }
+        conexion.Open();
+        SqliteCommand select = new SqliteCommand("SELECT * FROM cadetes", conexion);
+        var query = select.ExecuteReader();
+        while (query.Read())
+            {                                          //ID,          Nombre               Direc         Telefono           IDCadeteria
+                ListaCadetes.Add(new Cadetes(query.GetInt32(0), query.GetString(1), query.GetString(2), query.GetString(3),query.GetInt32(4)));
             }
+        conexion.Close();
       }
 
       public Cadetes CadetePorID(int id)
@@ -32,36 +36,43 @@ namespace CadeteriaWeb.Models.CadetesModels
         public List<Cadetes> TodosCadetes(){
             return this.ListaCadetes;
         }
-        public void SubirCadetes(Cadetes Cadete){
-            string path = @"Cadeteria.csv";
-            ListaCadetes.Add(Cadete);
-            File.WriteAllText(path,"");
-            foreach (var item in ListaCadetes)
+        public bool SubirCadetes(Cadetes Cadete){
+            conexion.Open();
+            SqliteCommand insertar = new("INSERT INTO cadetes (nombre,direccion,telefono,id_cadeteria) VALUES (@nom, @dire, @tel, @id_cad)", conexion);
+            insertar.Parameters.AddWithValue("@nom", Cadete.Nombre);
+            insertar.Parameters.AddWithValue("@dire", Cadete.Direccion);
+            insertar.Parameters.AddWithValue("@tel", Cadete.Telefono);
+            insertar.Parameters.AddWithValue("@id_cad", Cadete.IDCadeteria);
+             try
             {
-                string cad = $"{item.ID};{item.Nombre};{item.Direccion};{item.Telefono}\n";
-                File.AppendAllText(path, cad);
+                insertar.ExecuteReader();
+                conexion.Close();
+                return true;
             }
-
+            catch(Exception ex)
+            {
+                Console.WriteLine("Error: " + ex.Message);
+                conexion.Close();
+                return false;
+            }
         }
-        public bool EliminarCadetes(string ID){
-            string path = @"Cadeteria.csv";
-            string[]leer = System.IO.File.ReadAllLines(path);
-            System.IO.File.WriteAllText(path,"");
-            bool band = false;
-            for (int i = 0; i < leer.Length; i++)
-            {
-                string[]datos = leer[i].Split(";");
-                if ( ID == datos[0].Trim())
-                {
-                  band = true;   
-                }else
-                {
-                    System.IO.File.AppendAllText(path, leer[i] +"\n");
-                }
 
-                
+        public bool EliminarCadetes(string ID){
+            conexion.Open();
+            SqliteCommand select = new SqliteCommand("DELETE FROM cadetes WHERE id_cadete = @id", conexion);
+            select.Parameters.AddWithValue("@id",Int32.Parse(ID));
+             try
+            {
+                select.ExecuteReader();
+                conexion.Close();
+                return true;
             }
-            return band;
+            catch(Exception ex)
+            {
+                Console.WriteLine("Error: " + ex.Message);
+                conexion.Close();
+                return false;
+            }
            
 
 

@@ -1,6 +1,7 @@
 
 @model List<CadeteriaWeb.Models.PedidosModels.Pedidos>
-@{CadeteriaWeb.Models.CadetesModels.CadetesRepositorio CadeRepo  = new CadeteriaWeb.Models.CadetesModels.CadetesRepositorio();}    
+@{CadeteriaWeb.Models.CadetesModels.CadetesRepositorio CadeRepo  = new CadeteriaWeb.Models.CadetesModels.CadetesRepositorio();
+CadeteriaWeb.Models.ClientesModels.ClientesRepositorio ClienRepo = new CadeteriaWeb.Models.ClientesModels.ClientesRepositorio();}    
 <style>table {
   border-collapse: collapse;
   border: 1px solid black;
@@ -56,14 +57,14 @@ tbody tr:nth-child(even) th {
             {
             <tr>
                 <td> @item.Obs</td>
-                <td> @item.Cliente </td>
+                <td> @ClienRepo.ClientePorID(@item.Cliente).Nombre</td>
                 @{
-                  if (CadeRepo.CadetePorID(@item.Cadete) == null)
+                  if (@item.Cadete == null)
                 {
                     <td>No existe el cadete</td>
                 }else
                 {
-                    <td>@CadeRepo.CadetePorID(@item.Cadete).Nombre</td>
+                    <td>@CadeRepo.CadetePorID(@item.Cadete.Value).Nombre</td>
                 }
                   if (@item.Estado)
                   {

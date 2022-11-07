@@ -19,16 +19,22 @@ public class Cadetes
 
     public string Telefono { get; set; }
 
+    public int IDCadeteria{get;set;}
+
+
+    public Cadetes(){}
+
     
 
     
-    public Cadetes(int id,string nombre, string direccion, string telefono)
+    public Cadetes(int id,string nombre, string direccion, string telefono, int idcad)
     {
         
         Nombre = nombre;
         Direccion = direccion;
         Telefono = telefono;
         ID = id;
+        IDCadeteria = idcad;
     }
 
     

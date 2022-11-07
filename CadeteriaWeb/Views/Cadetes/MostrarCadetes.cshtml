@@ -1,5 +1,6 @@
 
-@model List<CadeteriaWeb.Models.CadetesModels.Cadetes>
+@model List<CadeteriaWeb.Models.CadetesModels.Cadetes>;
+@{CadeteriaWeb.Models.CadeteriaModels.CadeteriaRepositorio CadeteriaRepo = new CadeteriaWeb.Models.CadeteriaModels.CadeteriaRepositorio();}
 <style>table {
   border-collapse: collapse;
   border: 1px solid black;
@@ -44,6 +45,7 @@ tbody tr:nth-child(even) th {
             <th> Nombre </th>
             <th> Direccion </th>
             <th> Telefono </th>
+            <th>Cadeteria</th>
             <th></th>
             <th></th>
         </tr>
@@ -57,6 +59,7 @@ tbody tr:nth-child(even) th {
                 <td> @item.Nombre</td>
                 <td> @item.Direccion </td>
                 <td> @item.Telefono </td>
+                <td>@CadeteriaRepo.CadeteriaPorID(item.IDCadeteria).Nombre</td>
                 
                 <td><a  asp-controller="Cadetes" asp-action="EditarCadetes" asp-route-id="@item.ID">Editar</a></td>
                 <td><a  asp-controller="Cadetes" asp-action="EliminarCadetes" asp-route-id="@item.ID">Eliminar</a></td>

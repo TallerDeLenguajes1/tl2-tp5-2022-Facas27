@@ -1,4 +1,5 @@
  @model CadeteriaWeb.ViewModels.CadetesViewModels
+ @{CadeteriaWeb.Models.CadeteriaModels.CadeteriaRepositorio CadeteriaRepo = new CadeteriaWeb.Models.CadeteriaModels.CadeteriaRepositorio();}
 <div>
     <h3>Subida de Cadetes</h3>
 
@@ -18,6 +19,21 @@
     <label class="form-label" asp-for="@Model.Telefono"></label>
     <input class="form-control" asp-for="@Model.Telefono" /> <br/>
     <span class="form-control" asp-validation-for="@Model.Telefono" ></span>
+
+     <label class="form-label" asp-for="@Model.IDCadeteria"></label>
+    <select  asp-for="@Model.IDCadeteria" >
+        @foreach (var item in CadeteriaRepo.TodosCadeteria())
+        {
+            if (item.ID == Model.IDCadeteria)
+            {
+              <option value="@item.ID" selected>@item.Nombre</option>   
+            }else
+            {
+                <option value="@item.ID">@item.Nombre</option>
+            }
+            
+        }
+    </select><br/>
     <button  class="btn btn-primary">Enviar</button>
 </form>
 

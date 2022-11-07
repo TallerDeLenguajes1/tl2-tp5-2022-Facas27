@@ -1,6 +1,7 @@
 @model CadeteriaWeb.ViewModels.PedidosViewModels
  @{
     CadeteriaWeb.Models.CadetesModels.CadetesRepositorio CadeRepo = new CadeteriaWeb.Models.CadetesModels.CadetesRepositorio();
+    CadeteriaWeb.Models.ClientesModels.ClientesRepositorio ClienRepo = new CadeteriaWeb.Models.ClientesModels.ClientesRepositorio();
  }
 
 <div>
@@ -15,8 +16,19 @@
     <span class="form-control" asp-validation-for="@Model.Obs" ></span>
 
     <label class="form-label" asp-for="@Model.Cliente"></label>
-    <input class="form-control" asp-for="@Model.Cliente" value="@Model.Cliente"/>  <br />
-    <span class="form-control" asp-validation-for="@Model.Cliente" ></span>
+    <select  asp-for="@Model.Cliente" >
+        @foreach (var item in ClienRepo.TodosCliente())
+        {
+            if (item.ID == Model.Cliente)
+            {
+              <option value="@item.ID" selected>@item.Nombre</option>   
+            }else
+            {
+                <option value="@item.ID">@item.Nombre</option>
+            }
+            
+        }
+    </select><br/>
 
     <label class="form-label" asp-for="@Model.Cadete"></label>
     <select  asp-for="@Model.Cadete" >

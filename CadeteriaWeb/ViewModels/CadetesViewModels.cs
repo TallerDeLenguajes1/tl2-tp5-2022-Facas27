@@ -20,26 +20,21 @@ namespace CadeteriaWeb.ViewModels
 
         [Required][Phone][Display(Name="Telefono del Cadete")]
         public string  Telefono {get;set;}
+        [Required][Display(Name="Nombre  de la Cadeteria")]
+        public int IDCadeteria{get;set;}
 
 
         public CadetesViewModels(){
-            this.ID = 0;
-            foreach (string cadete in File.ReadAllLines(@"Cadeteria.csv"))
-            {
-                if (cadete != "")
-                {
-                    this.ID = Int32.Parse(cadete.Split(";")[0])+1;
-                }
-            }
 
         }
 
-        public CadetesViewModels(int id,string nombre, string dire, string tel){
+        public CadetesViewModels(int id,string nombre, string dire, string tel, int idcad){
 
             Nombre = nombre;
             Direccion = dire;
             Telefono = tel;
             ID = id;
+            IDCadeteria = idcad;
 
             
         }

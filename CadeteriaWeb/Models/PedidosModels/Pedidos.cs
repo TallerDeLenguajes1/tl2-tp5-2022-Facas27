@@ -8,13 +8,13 @@ using CadeteriaWeb.Models.ClientesModels;
 namespace CadeteriaWeb.Models.PedidosModels;
 public class Pedidos
 {
-    public int Nro { get; private set; }
+    public int Nro { get; set; }
 
     public string Obs { get; set; }
 
     public int Cliente {get;set;}
     
-    public int Cadete {get;set;}
+    public int? Cadete {get;set;}
 
     public bool Estado {get;set;}
 

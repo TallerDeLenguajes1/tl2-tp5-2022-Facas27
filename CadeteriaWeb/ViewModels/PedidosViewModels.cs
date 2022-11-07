@@ -17,21 +17,15 @@ namespace CadeteriaWeb.ViewModels
         [Required][Display(Name="IDCliente del Pedido")]
         public int Cliente {get;set;}
         
-        [Required][Display(Name="Cadete del Pedido")]
+        [Display(Name="Cadete del Pedido")]
         public int Cadete {get;set;}
 
+        [Required]
         public bool Estado {get;set;}
 
 
         public PedidosViewModels(){
-            this.Nro = 0;
-            foreach (string pedido in File.ReadAllLines(@"Pedidos.csv"))
-            {
-                if (pedido != "")
-                {
-                    this.Nro = Int32.Parse(pedido.Split(";")[0])+1;
-                }
-            }
+            
             this.Estado = true;
         }
         public PedidosViewModels(int nro, string obs,int cliente, int cadete){
