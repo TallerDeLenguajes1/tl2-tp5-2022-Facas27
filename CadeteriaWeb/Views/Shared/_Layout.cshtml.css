@@ -46,6 +46,25 @@ button.accept-policy {
   white-space: nowrap;
   line-height: 60px;
 }
+#log-option{
+  position: absolute;
+  right: 1em;
+  width: fit-content;
+  top: 0.1em;
+}
+
+#log-option section{
+  display: inline-block;
+}
+
+#log-option a {
+  border: 1px gray solid;
+  border-radius: 8px;
+  display: inline-block;
+}
+#log-option li{
+  list-style: none;
+}
 
 
 

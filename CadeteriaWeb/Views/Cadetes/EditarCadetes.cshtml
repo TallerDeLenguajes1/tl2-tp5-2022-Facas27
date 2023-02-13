@@ -1,12 +1,9 @@
- @model CadeteriaWeb.ViewModels.CadetesViewModels
+ @model CadeteriaWeb.ViewModels.CadetesViewModels //NOS LLEGA UN CADETEVIEWMODEL
  @{CadeteriaWeb.Models.CadeteriaModels.CadeteriaRepositorio CadeteriaRepo = new CadeteriaWeb.Models.CadeteriaModels.CadeteriaRepositorio();}
 
     <h3>Editor de Cadetes</h3>
 
-   
-
-
-<form  method="post">
+<form  method="post"><!-- MOSTRAMOS LOS DATOS DEL CADETE Y LE PERMITIMOS CAMBIARLO -->
     <label class="form-label" asp-for="@Model.Nombre"></label>
     <input class="form-control" asp-for="@Model.Nombre" value="@Model.Nombre" /> <br />
     <span class="form-control" asp-validation-for="@Model.Nombre" ></span>

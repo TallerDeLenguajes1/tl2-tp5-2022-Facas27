@@ -47,6 +47,25 @@ button.accept-policy[b-18sqgtc0t2] {
   white-space: nowrap;
   line-height: 60px;
 }
+#log-option[b-18sqgtc0t2]{
+  position: absolute;
+  right: 1em;
+  width: fit-content;
+  top: 0.1em;
+}
+
+#log-option section[b-18sqgtc0t2]{
+  display: inline-block;
+}
+
+#log-option a[b-18sqgtc0t2] {
+  border: 1px gray solid;
+  border-radius: 8px;
+  display: inline-block;
+}
+#log-option li[b-18sqgtc0t2]{
+  list-style: none;
+}
 
 
 

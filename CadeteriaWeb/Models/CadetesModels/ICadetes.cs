@@ -10,6 +10,8 @@ public interface ICadetes
     Cadetes CadetePorID(int id);
 
     List<Cadetes>TodosCadetes();
+    public bool EliminarCadetes(string ID);
+    public bool SubirCadetes(Cadetes Cadete);
 
     
 }

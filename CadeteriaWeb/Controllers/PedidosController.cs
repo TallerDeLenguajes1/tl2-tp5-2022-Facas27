@@ -16,11 +16,13 @@ namespace CadeteriaWeb.Controllers
     {
         private readonly ILogger<PedidosController> _logger;
         private readonly IMapper _mapper;
+        private readonly IPedidos PediRepo;
 
-        public PedidosController(ILogger<PedidosController> logger, IMapper mapper)
+        public PedidosController(ILogger<PedidosController> logger, IMapper mapper, IPedidos pediRepo)
         {
             _logger = logger;
             _mapper = mapper;
+            PediRepo = pediRepo;
         }
 
         public IActionResult Index()

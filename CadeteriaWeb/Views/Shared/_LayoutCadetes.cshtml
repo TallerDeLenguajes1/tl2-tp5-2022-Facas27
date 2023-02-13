@@ -27,8 +27,22 @@
                         </li>
                         <li class="nav-item">
                             <a class="nav-link text-dark" asp-area="" asp-controller="Cadetes" asp-action="MostrarCadetes">Mostrar Cadetes</a>
-                        </li>                        
+                        </li>  
+                        
                     </ul>
+                    <ul>
+                    <li style="list-style: none;" class="nav-item" id="log-option">
+                            @if(Context.Session.GetInt32("rol") == 1)
+                            {
+                                <section>@Context.Session.GetString("name") (Admin)</section>
+                            }
+                            else
+                            {
+                                <section>@Context.Session.GetString("name") (Cadete)</section>
+                            }
+                            <a class="nav-link text-dark" asp-controller="Logging" asp-action="Logout"><strong>Cerrar sesión</strong></a>
+                        </li>
+                        </ul>                      
                 </div>
             </div>
         </nav>

@@ -1,12 +1,28 @@
 using AutoMapper;
+
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
+//AÑADIENDO LOS MAPPERS
 builder.Services.AddControllersWithViews();
 var automapper = new MapperConfiguration(item => item.AddProfile(new CadeteriaWeb.MappingProfile())); 
 IMapper mapper = automapper.CreateMapper();
 
+//CREANDO LAS DEPENDECIAS
+builder.Services.AddTransient<CadeteriaWeb.Models.CadetesModels.ICadetes, CadeteriaWeb.Models.CadetesModels.CadetesRepositorio>();
+builder.Services.AddTransient<CadeteriaWeb.Models.PedidosModels.IPedidos, CadeteriaWeb.Models.PedidosModels.PedidosRepositoriossqlServer>();
+builder.Services.AddTransient<CadeteriaWeb.Models.ClientesModels.IClientes, CadeteriaWeb.Models.ClientesModels.ClientesRepositorio>();
+builder.Services.AddTransient<CadeteriaWeb.Models.UsuarioModels.IUsuario, CadeteriaWeb.Models.UsuarioModels.UsuarioRepositorio>();
+
 builder.Services.AddSingleton(mapper);
+builder.Services.AddDistributedMemoryCache();
+
+builder.Services.AddSession(options =>
+{
+    options.IdleTimeout = TimeSpan.FromSeconds(99999999999);
+    options.Cookie.HttpOnly = true;
+    options.Cookie.IsEssential = true;
+});
 
 
 var app = builder.Build();
@@ -26,6 +42,8 @@ app.UseStaticFiles();
 app.UseRouting();
 
 app.UseAuthorization();
+app.UseSession();
+
 
 app.MapControllerRoute(
     name: "default",

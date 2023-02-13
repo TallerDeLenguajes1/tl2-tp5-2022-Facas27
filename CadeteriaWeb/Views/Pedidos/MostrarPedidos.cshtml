@@ -1,12 +1,14 @@
 
-@model List<CadeteriaWeb.Models.PedidosModels.Pedidos>
+@model List<CadeteriaWeb.Models.PedidosModels.Pedidos> //NOS LLEGA UNA LISTA DE PEDIDOS
 @{CadeteriaWeb.Models.CadetesModels.CadetesRepositorio CadeRepo  = new CadeteriaWeb.Models.CadetesModels.CadetesRepositorio();
 CadeteriaWeb.Models.ClientesModels.ClientesRepositorio ClienRepo = new CadeteriaWeb.Models.ClientesModels.ClientesRepositorio();}    
-<style>table {
+<style>
+  table {
   border-collapse: collapse;
   border: 1px solid black;
   text-align: center;
 	vertical-align: middle;
+  
 }
 
 th, td {
@@ -38,7 +40,15 @@ tbody th {
 }
 tbody tr:nth-child(even) th {
   background-color: #25c;
-}</style>
+}
+main{
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+}
+</style>
+<body>
+  
 
 <table >
     <thead>
@@ -47,8 +57,11 @@ tbody tr:nth-child(even) th {
             <th> Cliente </th>
             <th> Cadete </th>
             <th>Estado</th>
-            <th></th>
-            <th></th>
+            @if (Context.Session.GetInt32("rol") == 1){
+              <th></th>
+              <th></th>
+            }
+            
         </tr>
     </thead>
     <tbody>
@@ -76,17 +89,22 @@ tbody tr:nth-child(even) th {
                   
                 } 
                 
+                   @if (Context.Session.GetInt32("rol") == 1){
+                    <td><a  asp-controller="Pedidos" asp-action="EditarPedidos" asp-route-id="@item.Nro">Editar</a></td>
+                    <td><a  asp-controller="Pedidos" asp-action="EliminarPedidos" asp-route-id="@item.Nro">Eliminar</a></td>
+                   }
+                        
                 
-                <td><a  asp-controller="Pedidos" asp-action="EditarPedidos" asp-route-id="@item.Nro">Editar</a></td>
-                <td><a  asp-controller="Pedidos" asp-action="EliminarPedidos" asp-route-id="@item.Nro">Eliminar</a></td>
                 
             </tr>    
             }
 
             
     </tbody>
-    <a  asp-controller="Pedidos" asp-action="MostrarPedidos" style="display: flex;
-                                                                   align-items: center;
-                                                                   justify-content: center;" >Refrescar </a>
+   
     
 </table>
+ <a  asp-controller="Pedidos" asp-action="MostrarPedidos" style="display: flex;
+                                                                   align-items: center;
+                                                                   justify-content: center;" >Refrescar </a>
+</body>

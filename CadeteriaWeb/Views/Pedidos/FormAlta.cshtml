@@ -31,6 +31,8 @@
     </select><br/>
 
     <label class="form-label" asp-for="@Model.Cadete"></label>
+
+    <!--LE PONEMOS EN UN SELECT LOS CADETES A LOS CUALES PUEDE ASIGNAR EL PEDIDO -->
     <select  asp-for="@Model.Cadete" >
         @foreach (var item in CadeRepo.TodosCadetes())
         {
@@ -38,6 +40,7 @@
             
         }
     </select><br/>
+    
     <span class="form-control" asp-validation-for="@Model.Cadete" ></span>
     <button  class="btn btn-primary">Enviar</button>
 </form>

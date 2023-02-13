@@ -7,6 +7,31 @@ using Microsoft.Data.Sqlite;
 
 namespace CadeteriaWeb.Models.PedidosModels
 {
+
+
+    public class PedidosRepositoriossqlServer : IPedidos
+    {
+        public bool EliminarPedido(string Nro)
+        {
+            throw new NotImplementedException();
+        }
+
+        public Pedidos PedidoPorNro(int nro)
+        {
+            throw new NotImplementedException();
+        }
+
+        public bool SubirPedido(Pedidos Pedido)
+        {
+            throw new NotImplementedException();
+        }
+
+        public List<Pedidos> TodosPedidos()
+        {
+            throw new NotImplementedException();
+        }
+    }
+
     public class PedidosRepositorio:IPedidos
     {
         private List<Pedidos>ListaPedidos;
@@ -23,6 +48,7 @@ namespace CadeteriaWeb.Models.PedidosModels
                                             Obs =  query.GetString(1),
                                             Estado = query.GetBoolean(4),
                                             Cliente = query.GetInt32(2),
+                                            //SI LO QUE TRAE ES NULO LE PONE EL VALOR null sino su valor
                                             Cadete = query.IsDBNull(3) ? null : query.GetInt32(3)
 
                 });
