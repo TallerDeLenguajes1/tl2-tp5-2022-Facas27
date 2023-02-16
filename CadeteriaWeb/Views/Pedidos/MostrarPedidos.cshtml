@@ -1,7 +1,95 @@
 
 @model List<CadeteriaWeb.Models.PedidosModels.Pedidos> //NOS LLEGA UNA LISTA DE PEDIDOS
-@{CadeteriaWeb.Models.CadetesModels.CadetesRepositorio CadeRepo  = new CadeteriaWeb.Models.CadetesModels.CadetesRepositorio();
-CadeteriaWeb.Models.ClientesModels.ClientesRepositorio ClienRepo = new CadeteriaWeb.Models.ClientesModels.ClientesRepositorio();}    
+
+
+<body>
+  
+
+<table >
+    <thead>
+        <tr>
+            <th> Observacion </th>
+            <th> Cliente </th>
+            <th>Direccion</th>
+            <th> Cadete </th>
+            <th>Estado</th>
+            @if (Context.Session.GetInt32("rol") == 1){
+              <th></th>
+              <th></th>
+            }
+            
+        </tr>
+    </thead>
+    <tbody>
+        
+            @foreach (var item in Model)
+            {
+              <tr> 
+              <td> @item.Obs</td>
+              @{ if (@item.Cliente is null)
+                    {
+                        <td>No existe el cliente</td>
+                        <td>No existe el cliente</td>
+                        
+                    }else{
+                        @foreach (var cliente in (List<CadeteriaWeb.Models.ClientesModels.Clientes>)ViewData["clientes"])
+                        {
+                          if (item.Cliente.Value == cliente.ID)
+                          {
+                            <td>@cliente.Nombre</td>
+                            <td>@cliente.Direccion</td>
+                          }
+                          
+                        } 
+                    }
+                    if (@item.Cadete is null)
+                    {
+                        <td>No existe el cadete</td>
+                    }else
+                    {
+                        @foreach (var cadete in (List<CadeteriaWeb.Models.CadetesModels.Cadetes>)ViewData["cadetes"])
+                        {
+                          if (item.Cadete.Value == cadete.ID)
+                          {
+                            <td>@cadete.Nombre</td>
+                          }
+                          
+                        } 
+                    }}
+              
+                     
+                  @if (@item.Estado)
+                  {
+                    <td>En camino</td>
+                  }else
+                  {
+                     <td>Entregado</td>
+                  } 
+                  @if (Context.Session.GetInt32("rol") == 1){
+                    <td><a  asp-controller="Pedidos" asp-action="EditarPedidos" asp-route-id="@item.Nro">Editar</a></td>
+                    <td><a  asp-controller="Pedidos" asp-action="EliminarPedidos" asp-route-id="@item.Nro">Eliminar</a></td>
+                   }
+                   </tr> 
+                    
+     
+            }
+            
+                          
+                        
+                
+                
+              
+            
+
+            
+    </tbody>
+   
+    
+</table>
+ <a  asp-controller="Pedidos" asp-action="MostrarPedidos" style="display: flex;
+                                                                   align-items: center;
+                                                                   justify-content: center;" >Refrescar </a>
+</body>
 <style>
   table {
   border-collapse: collapse;
@@ -47,64 +135,3 @@ main{
   flex-direction: column;
 }
 </style>
-<body>
-  
-
-<table >
-    <thead>
-        <tr>
-            <th> Observacion </th>
-            <th> Cliente </th>
-            <th> Cadete </th>
-            <th>Estado</th>
-            @if (Context.Session.GetInt32("rol") == 1){
-              <th></th>
-              <th></th>
-            }
-            
-        </tr>
-    </thead>
-    <tbody>
-        
-            @foreach (var item in Model)
-            {
-            <tr>
-                <td> @item.Obs</td>
-                <td> @ClienRepo.ClientePorID(@item.Cliente).Nombre</td>
-                @{
-                  if (@item.Cadete == null)
-                {
-                    <td>No existe el cadete</td>
-                }else
-                {
-                    <td>@CadeRepo.CadetePorID(@item.Cadete.Value).Nombre</td>
-                }
-                  if (@item.Estado)
-                  {
-                    <td>En camino</td>
-                  }else
-                  {
-                     <td>Entregado</td>
-                  }
-                  
-                } 
-                
-                   @if (Context.Session.GetInt32("rol") == 1){
-                    <td><a  asp-controller="Pedidos" asp-action="EditarPedidos" asp-route-id="@item.Nro">Editar</a></td>
-                    <td><a  asp-controller="Pedidos" asp-action="EliminarPedidos" asp-route-id="@item.Nro">Eliminar</a></td>
-                   }
-                        
-                
-                
-            </tr>    
-            }
-
-            
-    </tbody>
-   
-    
-</table>
- <a  asp-controller="Pedidos" asp-action="MostrarPedidos" style="display: flex;
-                                                                   align-items: center;
-                                                                   justify-content: center;" >Refrescar </a>
-</body>

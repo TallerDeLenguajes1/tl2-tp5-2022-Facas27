@@ -1,23 +1,27 @@
- @model CadeteriaWeb.ViewModels.CadetesViewModels //NOS LLEGA UN CADETEVIEWMODEL
+@model CadeteriaWeb.ViewModels.ClientesViewModels
  
+<div>
+    <h3>Subida de Clientes</h3>
 
-    <h3>Editor de Cadetes</h3>
+    <h5>Ingrese los datos del Cliente</h5>
+   
 
-<form  method="post"><!-- MOSTRAMOS LOS DATOS DEL CADETE Y LE PERMITIMOS CAMBIARLO -->
+
+<form  method="post">
     <label class="form-label" asp-for="@Model.Nombre"></label>
-    <input class="form-control" asp-for="@Model.Nombre" value="@Model.Nombre" /> <br />
+    <input class="form-control" asp-for="@Model.Nombre" placeholder="Ingrese el nombre del cliente"/> <br />
     
 
     <label class="form-label" asp-for="@Model.Direccion"></label>
-    <input class="form-control" asp-for="@Model.Direccion" value="@Model.Direccion"/>  <br />
+    <input class="form-control" asp-for="@Model.Direccion" placeholder="Ingrese la direccion del cliente"/> <br />
     
 
     <label class="form-label" asp-for="@Model.Telefono"></label>
-    <input class="form-control" asp-for="@Model.Telefono" value="@Model.Telefono" /> <br/>
+    <input class="form-control" asp-for="@Model.Telefono" placeholder="Ingrese la direccion del cliente"/> <br />
     
 
     
-    <button  class="btn btn-primary">Editar</button>
+    <button  class="btn btn-primary">Enviar</button>
 </form>
 
 </div>

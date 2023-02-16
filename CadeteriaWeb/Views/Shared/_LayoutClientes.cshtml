@@ -1,4 +1,4 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="utf-8" />
@@ -19,21 +19,16 @@
                 </button>
                 <div class="navbar-collapse collapse d-sm-inline-flex justify-content-between">
                     <ul class="navbar-nav flex-grow-1">
-                        @if (Context.Session.GetInt32("rol") == 1)
-                        {
-                             <li style="list-style: none;" class="nav-item">
-                             <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Index">Home</a>
-                            </li>
-                            <li style="list-style: none;" class="nav-item">
-                             <a class="nav-link text-dark" asp-area="" asp-controller="Cadetes" asp-action="Index">Cadetes</a>
-                            </li>
-                            <li style="list-style: none;" class="nav-item">
-                             <a class="nav-link text-dark" asp-area="" asp-controller="Clientes" asp-action="Index">Clientes</a>
-                            </li>
-                        }
                         <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Pedidos" asp-action="Index">Pedidos</a>
+                            <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Index">Home</a>
                         </li>
+                        <li class="nav-item">
+                            <a class="nav-link text-dark" asp-area="" asp-controller="Clientes" asp-action="SubirClientes">SubirClientes</a>
+                        </li>                      
+                        <li class="nav-item">
+                            <a class="nav-link text-dark" asp-area="" asp-controller="Clientes" asp-action="MostrarClientes">Mostrar Clientes</a>
+                        </li>  
+                        
                     </ul>
                     <ul>
                     <li style="list-style: none;" class="nav-item" id="log-option">
@@ -47,7 +42,7 @@
                             }
                             <a class="nav-link text-dark" asp-controller="Logging" asp-action="Logout"><strong>Cerrar sesión</strong></a>
                         </li>
-                        </ul>
+                        </ul>                      
                 </div>
             </div>
         </nav>
@@ -68,5 +63,4 @@
     <script src="~/js/site.js" asp-append-version="true"></script>
     @await RenderSectionAsync("Scripts", required: false)
 </body>
-
 </html>

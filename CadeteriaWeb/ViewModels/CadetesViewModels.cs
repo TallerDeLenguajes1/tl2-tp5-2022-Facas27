@@ -20,23 +20,19 @@ namespace CadeteriaWeb.ViewModels
 
         [Required][Phone][Display(Name="Telefono del Cadete")]
         public string  Telefono {get;set;}
-        [Required][Display(Name="Nombre  de la Cadeteria")]
-        public int IDCadeteria{get;set;}
+        
 
 
         public CadetesViewModels(){
 
         }
 
-        public CadetesViewModels(int id,string nombre, string dire, string tel, int idcad){
+        public CadetesViewModels(int id,string nombre, string dire, string tel){
 
             Nombre = nombre;
             Direccion = dire;
             Telefono = tel;
-            ID = id;
-            IDCadeteria = idcad;
-
-            
+            ID = id; 
         }
 
 

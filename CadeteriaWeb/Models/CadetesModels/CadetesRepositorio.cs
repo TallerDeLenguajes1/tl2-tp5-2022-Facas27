@@ -12,37 +12,77 @@ namespace CadeteriaWeb.Models.CadetesModels
     {
         
       private List<Cadetes> ListaCadetes {get;set;}
-      static public SqliteConnection conexion = new SqliteConnection($"Filename=CadeteriaWeb.db");
+
+      private readonly IConfiguration Configuration;
       
       
 
-      public CadetesRepositorio(){
+      public CadetesRepositorio(IConfiguration configuration){
         ListaCadetes = new List<Cadetes>();
-        conexion.Open();
-        SqliteCommand select = new SqliteCommand("SELECT * FROM cadetes", conexion);
-        var query = select.ExecuteReader();
-        while (query.Read())
-            {                                          //ID,          Nombre               Direc         Telefono           IDCadeteria
-                ListaCadetes.Add(new Cadetes(query.GetInt32(0), query.GetString(1), query.GetString(2), query.GetString(3),query.GetInt32(4)));
-            }
-        conexion.Close();
+        Configuration = configuration;
+
+        
+        
       }
 
       public Cadetes CadetePorID(int id)
             {
-                return this.ListaCadetes.FirstOrDefault(e => e.ID == id);
+                Cadetes cadete = null;
+                SqliteConnection conexion = new SqliteConnection(Configuration["ConnectionStrings:Connection"]);
+                conexion.Open();
+                SqliteCommand comando = new();
+                comando.Connection = conexion;
+                SqliteDataReader reader;
+
+                try
+                {
+                    comando.CommandText = "SELECT * FROM cadetes WHERE id_cadete = $id";
+                    comando.Parameters.AddWithValue("$id", id);
+                    reader = comando.ExecuteReader();
+
+                    if (reader.Read())
+                    {
+                        cadete = new Cadetes(reader.GetInt32(0), reader.GetString(1), reader.GetString(2), reader.GetString(3));
+                    }
+                }
+                catch (Exception ex)
+                {
+                    Console.WriteLine("Ha ocurrido un error (ClienteRepo, Obtener): " + ex.Message);
+                }
+
+              conexion.Close();
+
+              return cadete;
             }
 
         public List<Cadetes> TodosCadetes(){
-            return this.ListaCadetes;
+            SqliteConnection conexion = new SqliteConnection(Configuration["ConnectionStrings:Connection"]);
+            conexion.Open();
+            try
+            {
+                SqliteCommand select = new SqliteCommand("SELECT * FROM cadetes", conexion);
+                var query = select.ExecuteReader();
+                while (query.Read())
+                    {                                          //ID,          Nombre               Direc         Telefono           IDCadeteria
+                        ListaCadetes.Add(new Cadetes(query.GetInt32(0), query.GetString(1), query.GetString(2), query.GetString(3)));
+                    }
+                }
+            catch (System.Exception ex)
+            {
+                
+                Console.WriteLine("Ha ocurrido un error (CadeRepo, TodosCadetes): " + ex.Message);
+            }
+            
+            conexion.Close();
+            return ListaCadetes;
         }
         public bool SubirCadetes(Cadetes Cadete){
+            SqliteConnection conexion = new SqliteConnection(Configuration["ConnectionStrings:Connection"]);
             conexion.Open();
-            SqliteCommand insertar = new("INSERT INTO cadetes (nombre,direccion,telefono,id_cadeteria) VALUES (@nom, @dire, @tel, @id_cad)", conexion);
+            SqliteCommand insertar = new("INSERT INTO cadetes (nombre,direccion,telefono) VALUES (@nom, @dire, @tel)", conexion);
             insertar.Parameters.AddWithValue("@nom", Cadete.Nombre);
             insertar.Parameters.AddWithValue("@dire", Cadete.Direccion);
             insertar.Parameters.AddWithValue("@tel", Cadete.Telefono);
-            insertar.Parameters.AddWithValue("@id_cad", Cadete.IDCadeteria);
              try
             {
                 insertar.ExecuteReader();
@@ -58,6 +98,7 @@ namespace CadeteriaWeb.Models.CadetesModels
         }
 
         public bool EliminarCadetes(string ID){
+            SqliteConnection conexion = new SqliteConnection(Configuration["ConnectionStrings:Connection"]);
             conexion.Open();
             SqliteCommand select = new SqliteCommand("DELETE FROM cadetes WHERE id_cadete = @id", conexion);
             select.Parameters.AddWithValue("@id",Int32.Parse(ID));

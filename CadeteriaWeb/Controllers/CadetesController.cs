@@ -10,6 +10,8 @@ using CadeteriaWeb.Models.CadetesModels;
 using AutoMapper;
 using Microsoft.AspNetCore.Session;
 using Microsoft.AspNetCore.Http;
+using CadeteriaWeb.Models.PedidosModels;
+using CadeteriaWeb.Models.ClientesModels;
 
 
 
@@ -22,55 +24,110 @@ namespace CadeteriaWeb.Controllers
     {
 
         
-        private readonly ILogger<CadetesController> _logger;
+ private readonly ILogger<PedidosController> _logger;
         private readonly IMapper _mapper;
+        private readonly IPedidos PediRepo;
+        private readonly IClientes ClienteRepo;
         private readonly ICadetes CadeRepo;
 
-        public CadetesController(ILogger<CadetesController> logger, IMapper mapper, ICadetes cadeRepo)
+        public CadetesController(ILogger<PedidosController> logger, IMapper mapper, IPedidos pediRepo, IClientes clienterepo, ICadetes caderepo)
         {
             _logger = logger;
-            //MAPPER
             _mapper = mapper;
-            //DEPENDENCIA
-            CadeRepo = cadeRepo;
+            PediRepo = pediRepo;
+            ClienteRepo = clienterepo;
+            CadeRepo = caderepo;
+
         }
        
     
         public IActionResult Index()
         {
+             if (string.IsNullOrEmpty(HttpContext.Session.GetString("name")))
+            {
+                return RedirectToAction("Index", "Logging");
+            }
+
+            if (HttpContext.Session.GetInt32("rol") != 1)
+            {
+                return RedirectToAction("Index", "Home");
+            }
             
             return View();
         }
        //enviamos un nuevo viewmodel con la vista
         public IActionResult FormAlta(){
+             if (string.IsNullOrEmpty(HttpContext.Session.GetString("name")))
+            {
+                return RedirectToAction("Index", "Logging");
+            }
+
+            if (HttpContext.Session.GetInt32("rol") != 1)
+            {
+                return RedirectToAction("Index", "Home");
+            }
             return View(new CadetesViewModels());
         }
         //RECIBIMOS LOS DATOS DEL SUBMIT ENVIADO EN EL FORM DE LA VISTA FORMALTA
         [HttpPost]
         public IActionResult FormAlta(CadetesViewModels CadeteView){
+             if (string.IsNullOrEmpty(HttpContext.Session.GetString("name")))
+            {
+                return RedirectToAction("Index", "Logging");
+            }
+
+            if (HttpContext.Session.GetInt32("rol") != 1)
+            {
+                return RedirectToAction("Index", "Home");
+            }
             //SI EL MODELO QUE RECIBIMOS CUMPLE CON LAS CONDICIONES LO MAPEAMOS
                if(ModelState.IsValid)
                 {
                     //Hacer el mapping
                     Cadetes Cadete = _mapper.Map<Cadetes>(CadeteView);
-                    CadetesRepositorio CadRepo = new CadetesRepositorio();
-                    CadRepo.SubirCadetes(Cadete);
+                    CadeRepo.SubirCadetes(Cadete);
                 }
 
                 return View("Index");
         }
         public IActionResult MostrarCadetes(){
             //MANDAMOS A LA VISTA LA LISTA DE TODOS LOS CADETES
-            return View(new CadetesRepositorio().TodosCadetes());
+             if (string.IsNullOrEmpty(HttpContext.Session.GetString("name")))
+            {
+                return RedirectToAction("Index", "Logging");
+            }
+
+            if (HttpContext.Session.GetInt32("rol") != 1)
+            {
+                return RedirectToAction("Index", "Home");
+            }
+            return View(CadeRepo.TodosCadetes());
         }
         public IActionResult EliminarCadetes(){
+             if (string.IsNullOrEmpty(HttpContext.Session.GetString("name")))
+            {
+                return RedirectToAction("Index", "Logging");
+            }
+
+            if (HttpContext.Session.GetInt32("rol") != 1)
+            {
+                return RedirectToAction("Index", "Home");
+            }
             return View();
         }
         //recibe el id que sale del mostrarcadetes para eliminar 
         [HttpGet]
         [Route("/Cadetes/EliminarCadetes/{id}")]
         public IActionResult EliminarCadetes(string ID){
-            CadetesRepositorio CadeRepo = new CadetesRepositorio();
+             if (string.IsNullOrEmpty(HttpContext.Session.GetString("name")))
+            {
+                return RedirectToAction("Index", "Logging");
+            }
+
+            if (HttpContext.Session.GetInt32("rol") != 1)
+            {
+                return RedirectToAction("Index", "Home");
+            }
             if (CadeRepo.EliminarCadetes(ID))
             {
                 //MANDAMOS EL RESULTADO DE LA ACCION AL INDEX 
@@ -90,13 +147,22 @@ namespace CadeteriaWeb.Controllers
         //esto es por el route-id en mostrarcadetes
         [Route("/Cadetes/EditarCadetes/{id}")]
         public IActionResult EditarCadetes(string id){
-            CadetesRepositorio CadeRepo = new CadetesRepositorio();
+             if (string.IsNullOrEmpty(HttpContext.Session.GetString("name")))
+            {
+                return RedirectToAction("Index", "Logging");
+            }
+
+            if (HttpContext.Session.GetInt32("rol") != 1)
+            {
+                return RedirectToAction("Index", "Home");
+            }
             //LO BUSCAMOS AL CADETE POR EL ID
             Cadetes Cadete = CadeRepo.CadetePorID(Int32.Parse(id));
             //LO BORRAMOS 
             CadeRepo.EliminarCadetes(id);
             //LUEGO LO VOLVELMEOS VIEWMODEL Y LO PASAMOS
             CadetesViewModels CadeteViewM = _mapper.Map<CadetesViewModels>(Cadete);
+            
 
 
 
@@ -105,13 +171,21 @@ namespace CadeteriaWeb.Controllers
         //LO MISMO QUE CON EL CREAR para mas detalles entrar a la vista
         [HttpPost]
         public IActionResult EditarCadetes(CadetesViewModels CadeteView){
+             if (string.IsNullOrEmpty(HttpContext.Session.GetString("name")))
+            {
+                return RedirectToAction("Index", "Logging");
+            }
+
+            if (HttpContext.Session.GetInt32("rol") != 1)
+            {
+                return RedirectToAction("Index", "Home");
+            }
             //COMPROBAMOS QUE SEAN VALIDOS LOS CAMBIOS Y LO MANDAMOS AL INDEX
             if(ModelState.IsValid)
                 {
                     //Hacer el mapping
                     Cadetes Cadete = _mapper.Map<Cadetes>(CadeteView);
-                    CadetesRepositorio CadRepo = new CadetesRepositorio();
-                    CadRepo.SubirCadetes(Cadete);
+                    CadeRepo.SubirCadetes(Cadete);
                 }
 
             

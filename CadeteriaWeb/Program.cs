@@ -10,7 +10,7 @@ IMapper mapper = automapper.CreateMapper();
 
 //CREANDO LAS DEPENDECIAS
 builder.Services.AddTransient<CadeteriaWeb.Models.CadetesModels.ICadetes, CadeteriaWeb.Models.CadetesModels.CadetesRepositorio>();
-builder.Services.AddTransient<CadeteriaWeb.Models.PedidosModels.IPedidos, CadeteriaWeb.Models.PedidosModels.PedidosRepositoriossqlServer>();
+builder.Services.AddTransient<CadeteriaWeb.Models.PedidosModels.IPedidos, CadeteriaWeb.Models.PedidosModels.PedidosRepositorio>();
 builder.Services.AddTransient<CadeteriaWeb.Models.ClientesModels.IClientes, CadeteriaWeb.Models.ClientesModels.ClientesRepositorio>();
 builder.Services.AddTransient<CadeteriaWeb.Models.UsuarioModels.IUsuario, CadeteriaWeb.Models.UsuarioModels.UsuarioRepositorio>();
 

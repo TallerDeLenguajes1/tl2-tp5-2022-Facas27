@@ -31,6 +31,22 @@ build_metadata.AdditionalFiles.CssScope =
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQ2FkZXRlc1xNb3N0cmFyQ2FkZXRlcy5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
+[C:/Users/facun/OneDrive/Escritorio/TP5/tl2-tp5-2022-Facas27/CadeteriaWeb/Views/Clientes/EditarClientes.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQ2xpZW50ZXNcRWRpdGFyQ2xpZW50ZXMuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/facun/OneDrive/Escritorio/TP5/tl2-tp5-2022-Facas27/CadeteriaWeb/Views/Clientes/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQ2xpZW50ZXNcSW5kZXguY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/facun/OneDrive/Escritorio/TP5/tl2-tp5-2022-Facas27/CadeteriaWeb/Views/Clientes/MostrarClientes.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQ2xpZW50ZXNcTW9zdHJhckNsaWVudGVzLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/facun/OneDrive/Escritorio/TP5/tl2-tp5-2022-Facas27/CadeteriaWeb/Views/Clientes/SubirClientes.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQ2xpZW50ZXNcU3ViaXJDbGllbnRlcy5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
 [C:/Users/facun/OneDrive/Escritorio/TP5/tl2-tp5-2022-Facas27/CadeteriaWeb/Views/Home/Index.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxJbmRleC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
@@ -69,6 +85,10 @@ build_metadata.AdditionalFiles.CssScope =
 
 [C:/Users/facun/OneDrive/Escritorio/TP5/tl2-tp5-2022-Facas27/CadeteriaWeb/Views/Shared/_LayoutCadetes.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF9MYXlvdXRDYWRldGVzLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/facun/OneDrive/Escritorio/TP5/tl2-tp5-2022-Facas27/CadeteriaWeb/Views/Shared/_LayoutClientes.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF9MYXlvdXRDbGllbnRlcy5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
 [C:/Users/facun/OneDrive/Escritorio/TP5/tl2-tp5-2022-Facas27/CadeteriaWeb/Views/Shared/_LayoutPedidos.cshtml]

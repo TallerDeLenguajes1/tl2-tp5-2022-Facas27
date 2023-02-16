@@ -1,9 +1,4 @@
 @model CadeteriaWeb.ViewModels.PedidosViewModels
- @{
-    CadeteriaWeb.Models.CadetesModels.CadetesRepositorio CadeRepo = new CadeteriaWeb.Models.CadetesModels.CadetesRepositorio();
-    CadeteriaWeb.Models.ClientesModels.ClientesRepositorio ClienRepo = new CadeteriaWeb.Models.ClientesModels.ClientesRepositorio();
- }
-
 <div>
     <h3>Editor de Pedidos</h3>
 
@@ -13,11 +8,10 @@
 <form  method="post">
     <label class="form-label" asp-for="@Model.Obs"></label>
     <input class="form-control" asp-for="@Model.Obs" value="@Model.Obs"/> <br />
-    <span class="form-control" asp-validation-for="@Model.Obs" ></span>
 
     <label class="form-label" asp-for="@Model.Cliente"></label>
     <select  asp-for="@Model.Cliente" >
-        @foreach (var item in ClienRepo.TodosCliente())
+        @foreach (var item in (List<CadeteriaWeb.Models.ClientesModels.Clientes>)ViewData["clientes"])
         {
             if (item.ID == Model.Cliente)
             {
@@ -32,7 +26,7 @@
 
     <label class="form-label" asp-for="@Model.Cadete"></label>
     <select  asp-for="@Model.Cadete" >
-        @foreach (var item in CadeRepo.TodosCadetes())
+        @foreach (var item in (List<CadeteriaWeb.Models.CadetesModels.Cadetes>)ViewData["cadetes"])
         {
             if (item.ID == Model.Cadete)
             {
@@ -44,7 +38,6 @@
             
         }
     </select><br/>
-    <span class="form-control" asp-validation-for="@Model.Cadete" ></span>
     <label class="form-label" asp-for="@Model.Estado"></label>
     <select  asp-for="@Model.Estado" >
         @{
@@ -66,4 +59,37 @@
 </form>
 
 </div>
+
+<style>
+    body{
+        font-family:Arial, Helvetica, sans-serif;
+    }
+    h3, h5{
+        text-align: center;
+    }
+    header > h2{
+        color: white;
+        margin:0;
+    }
+    form{
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        padding: 1rem;
+        background-color: black;
+    }
+    label{
+        color: white;
+    }
+    form label, form input,form select, form button{
+        width: 90;
+        max-width:25rem ;
+        height: 2rem;
+        margin-block: .2rem;
+    }
+</style>
+
+    
+    
+    
 @section Scripts { <partial name="_ValidationScriptsPartial" /> } 

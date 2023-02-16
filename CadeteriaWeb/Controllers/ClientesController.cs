@@ -5,16 +5,16 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
+using CadeteriaWeb.Models.ClientesModels;
 using AutoMapper;
 using CadeteriaWeb.ViewModels;
 using CadeteriaWeb.Models.PedidosModels;
 using CadeteriaWeb.Models.CadetesModels;
-using CadeteriaWeb.Models.ClientesModels;
 
 namespace CadeteriaWeb.Controllers
 {
     
-    public class PedidosController : Controller
+     public class ClientesController : Controller
     {
         private readonly ILogger<PedidosController> _logger;
         private readonly IMapper _mapper;
@@ -22,7 +22,7 @@ namespace CadeteriaWeb.Controllers
         private readonly IClientes ClienteRepo;
         private readonly ICadetes CadeRepo;
 
-        public PedidosController(ILogger<PedidosController> logger, IMapper mapper, IPedidos pediRepo, IClientes clienterepo, ICadetes caderepo)
+        public ClientesController(ILogger<PedidosController> logger, IMapper mapper, IPedidos pediRepo, IClientes clienterepo, ICadetes caderepo)
         {
             _logger = logger;
             _mapper = mapper;
@@ -32,11 +32,25 @@ namespace CadeteriaWeb.Controllers
 
         }
 
-        public IActionResult Index()
+        public ActionResult Index()
         {
+            if (string.IsNullOrEmpty(HttpContext.Session.GetString("name")))
+            {
+                return RedirectToAction("Index", "Logging");
+            }
+
+            if (HttpContext.Session.GetInt32("rol") != 1)
+            {
+                return RedirectToAction("Index", "Home");
+            }
+
+
+            
+
             return View();
         }
-        public IActionResult FormAlta(){
+
+        public ActionResult SubirClientes(){
              if (string.IsNullOrEmpty(HttpContext.Session.GetString("name")))
             {
                 return RedirectToAction("Index", "Logging");
@@ -46,14 +60,14 @@ namespace CadeteriaWeb.Controllers
             {
                 return RedirectToAction("Index", "Home");
             }
-            ViewData["clientes"] = new List<Clientes>(ClienteRepo.TodosCliente());
-            ViewData["cadetes"] = new List<Cadetes>(CadeRepo.TodosCadetes());
 
-            return View(new PedidosViewModels());
+            return View(new ClientesViewModels());
+
         }
 
+
         [HttpPost]
-        public IActionResult FormAlta(PedidosViewModels PedidoView){
+        public IActionResult SubirClientes(ClientesViewModels ClienteView){
              if (string.IsNullOrEmpty(HttpContext.Session.GetString("name")))
             {
                 return RedirectToAction("Index", "Logging");
@@ -66,8 +80,8 @@ namespace CadeteriaWeb.Controllers
             if(ModelState.IsValid)
                 {
                     //Hacer el mapping
-                    Pedidos Pedido = _mapper.Map<Pedidos>(PedidoView);
-                    PediRepo.SubirPedido(Pedido);
+                    Clientes cliente = _mapper.Map<Clientes>(ClienteView);
+                    ClienteRepo.SubirClientes(cliente);
                     
                 }
 
@@ -76,12 +90,61 @@ namespace CadeteriaWeb.Controllers
 
 
         }
-        public IActionResult MostrarPedidos(){
-            ViewData["clientes"] = new List<Clientes>(ClienteRepo.TodosCliente());
-            ViewData["cadetes"] = new List<Cadetes>(CadeRepo.TodosCadetes());
-            return View(PediRepo.TodosPedidos());
+
+        public ActionResult MostrarClientes(){
+
+            if (string.IsNullOrEmpty(HttpContext.Session.GetString("name")))
+            {
+                return RedirectToAction("Index", "Logging");
+            }
+
+            if (HttpContext.Session.GetInt32("rol") != 1)
+            {
+                return RedirectToAction("Index", "Home");
+            }
+            return View(ClienteRepo.TodosCliente());
         }
-        public IActionResult EliminarPedidos(){
+
+        [HttpGet]
+        [Route("/Clientes/EditarClientes/{ID}")]
+        public ActionResult EditarClientes(string id){
+            if (string.IsNullOrEmpty(HttpContext.Session.GetString("name")))
+            {
+                return RedirectToAction("Index", "Logging");
+            }
+
+            if (HttpContext.Session.GetInt32("rol") != 1)
+            {
+                return RedirectToAction("Index", "Home");
+            }
+            Clientes cliente = ClienteRepo.ClientePorID(Int32.Parse(id));
+            ClienteRepo.EliminarClientes(id);
+            ClientesViewModels ClienteViewM = _mapper.Map<ClientesViewModels>(cliente);
+
+            return View(ClienteViewM);  
+        }
+
+        [HttpPost]
+        public IActionResult EditarClientes(ClientesViewModels ClienteView){
+            if (string.IsNullOrEmpty(HttpContext.Session.GetString("name")))
+            {
+                return RedirectToAction("Index", "Logging");
+            }
+
+            if (HttpContext.Session.GetInt32("rol") != 1)
+            {
+                return RedirectToAction("Index", "Home");
+            }
+            if(ModelState.IsValid)
+                {
+                    //Hacer el mapping
+                    Clientes cliente = _mapper.Map<Clientes>(ClienteView);
+                    ClienteRepo.SubirClientes(cliente);
+                }
+
+            return View("Index");
+        }
+        public IActionResult EliminarClientes(){
              if (string.IsNullOrEmpty(HttpContext.Session.GetString("name")))
             {
                 return RedirectToAction("Index", "Logging");
@@ -94,8 +157,8 @@ namespace CadeteriaWeb.Controllers
             return View();
         }
         [HttpGet]
-        [Route("/Pedidos/EliminarPedidos/{nro}")]
-        public IActionResult EliminarPedidos(string nro){
+        [Route("/Clientes/EliminarClientes/{ID}")]
+        public IActionResult EliminarClientes(string id){
              if (string.IsNullOrEmpty(HttpContext.Session.GetString("name")))
             {
                 return RedirectToAction("Index", "Logging");
@@ -105,7 +168,7 @@ namespace CadeteriaWeb.Controllers
             {
                 return RedirectToAction("Index", "Home");
             }
-            if (PediRepo.EliminarPedido(nro))
+            if (ClienteRepo.EliminarClientes(id))
             {
                 ViewData["Resultado"] = "Eliminado con exito";
                 return View("Index");
@@ -113,62 +176,12 @@ namespace CadeteriaWeb.Controllers
             {
                 ViewData["Resultado"] = "No se pudo eliminar";
                 return View("Index");
-            }
-
-
-        }
-        [HttpGet]
-        [Route("/Pedidos/EditarPedidos/{nro}")]
-        public IActionResult EditarPedidos(string nro){
-             if (string.IsNullOrEmpty(HttpContext.Session.GetString("name")))
-            {
-                return RedirectToAction("Index", "Logging");
-            }
-
-            if (HttpContext.Session.GetInt32("rol") != 1)
-            {
-                return RedirectToAction("Index", "Home");
-            }
-            Pedidos Pedido = PediRepo.PedidoPorNro(Int32.Parse(nro));
-            PediRepo.EliminarPedido(nro);
-
-            PedidosViewModels PedidoViewM = _mapper.Map<PedidosViewModels>(Pedido);
-            ViewData["clientes"] = new List<Clientes>(ClienteRepo.TodosCliente());
-            ViewData["cadetes"] = new List<Cadetes>(CadeRepo.TodosCadetes());
-
-
-
-            return View(PedidoViewM);
-        }
-        [HttpPost]
-        public IActionResult EditarPedidos(PedidosViewModels PedidoView){
-             if (string.IsNullOrEmpty(HttpContext.Session.GetString("name")))
-            {
-                return RedirectToAction("Index", "Logging");
-            }
-
-            if (HttpContext.Session.GetInt32("rol") != 1)
-            {
-                return RedirectToAction("Index", "Home");
-            }
-            if(ModelState.IsValid)
-                {
-                    //Hacer el mapping
-                    Pedidos Pedido = _mapper.Map<Pedidos>(PedidoView);
-                    PediRepo.SubirPedido(Pedido);
-                }
-
-            
-
-
-
-            return View("Index");
-        }
-
+            }  
+         }
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
-        public IActionResult Error()
-        {
-            return View("Error!");
-        }
-    }
+            public IActionResult Error()
+            {
+                return View("Error!");
+            }
+ }
 }

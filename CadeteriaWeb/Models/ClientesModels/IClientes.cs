@@ -9,7 +9,10 @@ namespace CadeteriaWeb.Models.ClientesModels
     {
         Clientes ClientePorID(int id);
 
-       List<Clientes>TodosCliente();
+        List<Clientes>TodosCliente();
+
+        bool SubirClientes(Clientes cliente);
+        bool EliminarClientes(string id);
 
         
     }

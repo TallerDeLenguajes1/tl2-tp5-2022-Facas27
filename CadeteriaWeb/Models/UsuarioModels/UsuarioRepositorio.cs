@@ -9,11 +9,11 @@ namespace CadeteriaWeb.Models.UsuarioModels
 {
     public class UsuarioRepositorio:IUsuario
     {
-       static public SqliteConnection conexion = new SqliteConnection($"Filename=CadeteriaWeb.db");
+       private readonly IConfiguration Configuration;
 
-       public UsuarioRepositorio()
+       public UsuarioRepositorio(IConfiguration configuration)
         {
-            
+            Configuration = configuration;
         }
          public Usuario Logear(string usuario, string pass)
         {
@@ -21,6 +21,7 @@ namespace CadeteriaWeb.Models.UsuarioModels
             int idCadete = 0;
 
             SqliteCommand comando = new();
+            SqliteConnection conexion = new SqliteConnection(Configuration["ConnectionStrings:Connection"]);
             conexion.Open();
             comando.Connection = conexion;
 

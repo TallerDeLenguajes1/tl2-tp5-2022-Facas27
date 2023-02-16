@@ -1,5 +1,5 @@
  @model CadeteriaWeb.ViewModels.CadetesViewModels
- @{CadeteriaWeb.Models.CadeteriaModels.CadeteriaRepositorio CadeteriaRepo = new CadeteriaWeb.Models.CadeteriaModels.CadeteriaRepositorio();}
+
 <div>
     <h3>Subida de Cadetes</h3>
 
@@ -9,33 +9,47 @@
 
 <form  method="post">
     <label class="form-label" asp-for="@Model.Nombre"></label>
-    <input class="form-control" asp-for="@Model.Nombre" /> <br />
-    <span class="form-control" asp-validation-for="@Model.Nombre" ></span>
+    <input class="form-control" asp-for="@Model.Nombre" placeholder="Ingrese su Nombre del cadete" /> <br />
+    
 
     <label class="form-label" asp-for="@Model.Direccion"></label>
-    <input class="form-control" asp-for="@Model.Direccion"/>  <br />
-    <span class="form-control" asp-validation-for="@Model.Direccion" ></span>
+    <input class="form-control" asp-for="@Model.Direccion" placeholder="Ingrese la direccion del cadete"/>  <br />
+    
 
     <label class="form-label" asp-for="@Model.Telefono"></label>
-    <input class="form-control" asp-for="@Model.Telefono" /> <br/>
-    <span class="form-control" asp-validation-for="@Model.Telefono" ></span>
+    <input class="form-control" asp-for="@Model.Telefono" placeholder="Ingrese el telefono del cadete" /> <br/>
+    
 
-     <label class="form-label" asp-for="@Model.IDCadeteria"></label>
-    <select  asp-for="@Model.IDCadeteria" >
-        @foreach (var item in CadeteriaRepo.TodosCadeteria())
-        {
-            if (item.ID == Model.IDCadeteria)
-            {
-              <option value="@item.ID" selected>@item.Nombre</option>   
-            }else
-            {
-                <option value="@item.ID">@item.Nombre</option>
-            }
-            
-        }
-    </select><br/>
     <button  class="btn btn-primary">Enviar</button>
 </form>
 
 </div>
+
+<style>
+    body{
+        font-family:Arial, Helvetica, sans-serif;
+    }
+    h3, h5{
+        text-align: center;
+    }
+    header > h2{
+        color: white;
+        margin:0;
+    }
+    form{
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        padding: 1rem;
+        background-color: black;
+    }
+    label{
+        color: white;
+    }
+    form label, form input,form select, form button{
+        width: 90;
+        max-width:25rem ;
+        height: 2rem;
+        margin-block: .2rem;
+    }
 @section Scripts { <partial name="_ValidationScriptsPartial" /> } 

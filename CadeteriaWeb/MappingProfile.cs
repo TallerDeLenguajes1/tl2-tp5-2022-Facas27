@@ -6,6 +6,7 @@ using AutoMapper;
 using CadeteriaWeb.ViewModels;
 using CadeteriaWeb.Models.CadetesModels;
 using CadeteriaWeb.Models.PedidosModels;
+using CadeteriaWeb.Models.ClientesModels;
 
 
 namespace CadeteriaWeb
@@ -18,6 +19,8 @@ namespace CadeteriaWeb
             CreateMap<Cadetes, CadetesViewModels>();
             CreateMap<PedidosViewModels, Pedidos>();
             CreateMap<Pedidos, PedidosViewModels>();
+            CreateMap<Clientes, ClientesViewModels>();
+            CreateMap<ClientesViewModels, Clientes>();
         }
     }
 }

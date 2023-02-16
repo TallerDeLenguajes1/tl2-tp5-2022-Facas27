@@ -25,6 +25,7 @@ namespace CadeteriaWeb.Models.ClientesModels
             Direccion = direccion;
             Telefono = telefono;
         }
+        
 
 
         

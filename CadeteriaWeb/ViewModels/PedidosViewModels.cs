@@ -14,7 +14,7 @@ namespace CadeteriaWeb.ViewModels
         [Required][StringLength(100)][Display(Name="Observaciones del Pedido")]
         public string Obs { get; set; }
         
-        [Required][Display(Name="IDCliente del Pedido")]
+        [Required][Display(Name="Nombre del Cliente ")]
         public int Cliente {get;set;}
         
         [Display(Name="Cadete del Pedido")]

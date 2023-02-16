@@ -12,7 +12,7 @@ public class Pedidos
 
     public string Obs { get; set; }
 
-    public int Cliente {get;set;}
+    public int? Cliente {get;set;}
     
     public int? Cadete {get;set;}
 
