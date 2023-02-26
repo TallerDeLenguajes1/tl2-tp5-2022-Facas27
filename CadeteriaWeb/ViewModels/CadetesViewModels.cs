@@ -15,7 +15,8 @@ namespace CadeteriaWeb.ViewModels
         [Required][StringLength(100)][Display(Name="Nombre del Cadete")]
         public string Nombre{get;set;}
 
-        [Required][StringLength(100)][Display(Name="Direccion del Cadete")]
+        [Required(ErrorMessage = "La dirección es requerida")][StringLength(30,ErrorMessage = "No puede superar los 100 caracteres")][Display(Name="Direccion del Cadete")]
+     
         public string Direccion {get;set;}
 
         [Required][Phone][Display(Name="Telefono del Cadete")]

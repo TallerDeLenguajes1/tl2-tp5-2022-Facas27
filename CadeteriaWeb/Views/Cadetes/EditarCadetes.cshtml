@@ -3,50 +3,26 @@
 
     <h3>Editor de Cadetes</h3>
 
-<form  method="post"><!-- MOSTRAMOS LOS DATOS DEL CADETE Y LE PERMITIMOS CAMBIARLO -->
-    <label class="form-label" asp-for="@Model.Nombre"></label>
-    <input class="form-control" asp-for="@Model.Nombre" value="@Model.Nombre" /> <br />
-    
+    <div class="card" style="width: 18rem;">
+         <div class="card-body">
+        <form  method="post" ><!-- MOSTRAMOS LOS DATOS DEL CADETE Y LE PERMITIMOS CAMBIARLO -->
+        <h5 class="card-title">Editar Cadete</h5>
+            <label class="form-label" asp-for="@Model.Nombre"></label>
+            <input class="form-control" asp-for="@Model.Nombre" value="@Model.Nombre" /> 
+            <span asp-validation-for="@Model.Nombre" class="text-danger"></span>
 
-    <label class="form-label" asp-for="@Model.Direccion"></label>
-    <input class="form-control" asp-for="@Model.Direccion" value="@Model.Direccion"/>  <br />
-    
+            <label class="form-label" asp-for="@Model.Direccion"></label>
+            <input class="form-control" asp-for="@Model.Direccion" value="@Model.Direccion"/> 
+            <span asp-validation-for="@Model.Direccion" class="text-danger"></span>
 
-    <label class="form-label" asp-for="@Model.Telefono"></label>
-    <input class="form-control" asp-for="@Model.Telefono" value="@Model.Telefono" /> <br/>
-    
-
-    
-    <button  class="btn btn-primary">Editar</button>
-</form>
-
+            <label class="form-label" asp-for="@Model.Telefono"></label>
+            <input class="form-control" asp-for="@Model.Telefono" value="@Model.Telefono" />
+            <span asp-validation-for="@Model.Telefono" class="text-danger"></span>
+        </form>
+    </div>
 </div>
-<style>
-    body{
-        font-family:Arial, Helvetica, sans-serif;
-    }
-    h3, h5{
-        text-align: center;
-    }
-    header > h2{
-        color: white;
-        margin:0;
-    }
-    form{
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        padding: 1rem;
-        background-color: black;
-    }
-    label{
-        color: white;
-    }
-    form label, form input,form select, form button{
-        width: 90;
-        max-width:25rem ;
-        height: 2rem;
-        margin-block: .2rem;
-    }
-</style>
-@section Scripts { <partial name="_ValidationScriptsPartial" /> } 
+
+
+@section Scripts { 
+    @* <link href="~/css/EditorCadete.css" rel="stylesheet" asp-file-version="true" /> *@
+<partial name="_ValidationScriptsPartial" /> } 

@@ -2024,24 +2024,31 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\facun\\.nuget\\packages\\": {}
+    "C:\\Users\\javie\\.nuget\\packages\\": {},
+    "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "c:\\Users\\facun\\OneDrive\\Escritorio\\TP5\\tl2-tp5-2022-Facas27\\CadeteriaWeb\\CadeteriaWeb.csproj",
+      "projectUniqueName": "C:\\Repo\\tl2-tp5-2022-Facas27\\CadeteriaWeb\\CadeteriaWeb.csproj",
       "projectName": "CadeteriaWeb",
-      "projectPath": "c:\\Users\\facun\\OneDrive\\Escritorio\\TP5\\tl2-tp5-2022-Facas27\\CadeteriaWeb\\CadeteriaWeb.csproj",
-      "packagesPath": "C:\\Users\\facun\\.nuget\\packages\\",
-      "outputPath": "c:\\Users\\facun\\OneDrive\\Escritorio\\TP5\\tl2-tp5-2022-Facas27\\CadeteriaWeb\\obj\\",
+      "projectPath": "C:\\Repo\\tl2-tp5-2022-Facas27\\CadeteriaWeb\\CadeteriaWeb.csproj",
+      "packagesPath": "C:\\Users\\javie\\.nuget\\packages\\",
+      "outputPath": "C:\\Repo\\tl2-tp5-2022-Facas27\\CadeteriaWeb\\obj\\",
       "projectStyle": "PackageReference",
+      "fallbackFolders": [
+        "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
+      ],
       "configFilePaths": [
-        "C:\\Users\\facun\\AppData\\Roaming\\NuGet\\NuGet.Config"
+        "C:\\Users\\javie\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
+        "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [
         "net6.0"
       ],
       "sources": {
+        "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
         "https://api.nuget.org/v3/index.json": {}
       },
       "frameworks": {
@@ -2100,7 +2107,7 @@
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.402\\RuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.406\\RuntimeIdentifierGraph.json"
       }
     }
   }
