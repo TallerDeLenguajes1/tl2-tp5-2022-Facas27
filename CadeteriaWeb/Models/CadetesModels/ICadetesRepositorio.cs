@@ -5,13 +5,15 @@ using System.Threading.Tasks;
 
 namespace CadeteriaWeb.Models.CadetesModels;
 
-public interface ICadetes
+public interface ICadetesRepositorio
 {
     Cadetes CadetePorID(int id);
 
     List<Cadetes>TodosCadetes();
     public bool EliminarCadetes(string ID);
     public bool SubirCadetes(Cadetes Cadete);
+
+    public bool ActualizarCadetes(Cadetes Cadete);
 
     
 }

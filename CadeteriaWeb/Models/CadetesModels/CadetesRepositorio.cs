@@ -8,7 +8,7 @@ using Microsoft.Data.Sqlite;
 
 namespace CadeteriaWeb.Models.CadetesModels
 {
-    public class CadetesRepositorio:ICadetes
+    public class CadetesRepositorio:ICadetesRepositorio
     {
         
       private List<Cadetes> ListaCadetes {get;set;}
@@ -117,6 +117,33 @@ namespace CadeteriaWeb.Models.CadetesModels
            
 
 
+        }
+        public bool ActualizarCadetes(Cadetes Cadete){
+            int resultado = 0;
+
+            SqliteConnection conexion = new SqliteConnection(Configuration["ConnectionStrings:Connection"]);
+            SqliteCommand comando = new();
+            conexion.Open();
+
+            try
+            {
+                comando.CommandText = "UPDATE cadetes SET nombre = $nom, direccion = $direc, telefono = $tel WHERE id_cadete = $id";
+                comando.Connection = conexion;
+                comando.Parameters.AddWithValue("$nom", Cadete.Nombre);
+                comando.Parameters.AddWithValue("$direc", Cadete.Direccion);
+                comando.Parameters.AddWithValue("$tel", Cadete.Telefono);
+                comando.Parameters.AddWithValue("$id", Cadete.ID);
+                resultado = comando.ExecuteNonQuery();
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine("Ha ocurrido un error (CadeteRepo, Actualizar): " + ex.Message);
+            }
+
+            conexion.Close();
+
+            return resultado > 0;
+        }
         } 
 
        
@@ -127,4 +154,3 @@ namespace CadeteriaWeb.Models.CadetesModels
 
 
     }
-}

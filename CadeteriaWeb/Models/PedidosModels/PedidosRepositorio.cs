@@ -11,7 +11,7 @@ namespace CadeteriaWeb.Models.PedidosModels
 
    
 
-    public class PedidosRepositorio:IPedidos
+    public class PedidosRepositorio:IPedidosRepositorio
     {
         private List<Pedidos>ListaPedidos {get;set;}
         private readonly IConfiguration Configuration;
@@ -131,6 +131,34 @@ namespace CadeteriaWeb.Models.PedidosModels
             }
            
 
+
+        }
+        public bool ActualizarPedidos(Pedidos Pedido){
+             int resultado = 0;
+
+            SqliteConnection conexion = new SqliteConnection(Configuration["ConnectionStrings:Connection"]);
+            SqliteCommand comando = new();
+            conexion.Open();
+
+            try
+            {
+                comando.CommandText = "UPDATE pedidos SET observacion = $obs, id_cliente = $cli, id_cadete = $cad, estado = $est WHERE id_pedido = $id";
+                comando.Connection = conexion;
+                comando.Parameters.AddWithValue("$obs", Pedido.Obs);
+                comando.Parameters.AddWithValue("$cli", Pedido.Cliente);
+                comando.Parameters.AddWithValue("$cad", Pedido.Cadete);
+                comando.Parameters.AddWithValue("$id", Pedido.Nro);
+                comando.Parameters.AddWithValue("$est", Pedido.Estado);
+                resultado = comando.ExecuteNonQuery();
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine("Ha ocurrido un error (PediRepo, Actualizar): " + ex.Message);
+            }
+
+            conexion.Close();
+
+            return resultado > 0;
 
         } 
 

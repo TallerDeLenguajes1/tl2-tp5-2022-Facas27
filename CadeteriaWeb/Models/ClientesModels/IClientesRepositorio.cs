@@ -5,7 +5,7 @@ using System.Threading.Tasks;
 
 namespace CadeteriaWeb.Models.ClientesModels
 {
-    public interface IClientes
+    public interface IClientesRepositorio
     {
         Clientes ClientePorID(int id);
 
@@ -13,6 +13,8 @@ namespace CadeteriaWeb.Models.ClientesModels
 
         bool SubirClientes(Clientes cliente);
         bool EliminarClientes(string id);
+
+        bool ActualizarClientes(Clientes Cliente);
 
         
     }

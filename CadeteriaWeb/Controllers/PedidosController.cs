@@ -18,11 +18,11 @@ namespace CadeteriaWeb.Controllers
     {
         private readonly ILogger<PedidosController> _logger;
         private readonly IMapper _mapper;
-        private readonly IPedidos PediRepo;
-        private readonly IClientes ClienteRepo;
-        private readonly ICadetes CadeRepo;
+        private readonly IPedidosRepositorio PediRepo;
+        private readonly IClientesRepositorio ClienteRepo;
+        private readonly ICadetesRepositorio CadeRepo;
 
-        public PedidosController(ILogger<PedidosController> logger, IMapper mapper, IPedidos pediRepo, IClientes clienterepo, ICadetes caderepo)
+        public PedidosController(ILogger<PedidosController> logger, IMapper mapper, IPedidosRepositorio pediRepo, IClientesRepositorio clienterepo, ICadetesRepositorio caderepo)
         {
             _logger = logger;
             _mapper = mapper;
@@ -130,18 +130,19 @@ namespace CadeteriaWeb.Controllers
                 return RedirectToAction("Index", "Home");
             }
             Pedidos Pedido = PediRepo.PedidoPorNro(Int32.Parse(nro));
-            PediRepo.EliminarPedido(nro);
 
             PedidosViewModels PedidoViewM = _mapper.Map<PedidosViewModels>(Pedido);
+           
             ViewData["clientes"] = new List<Clientes>(ClienteRepo.TodosCliente());
             ViewData["cadetes"] = new List<Cadetes>(CadeRepo.TodosCadetes());
 
 
-
+            
             return View(PedidoViewM);
         }
         [HttpPost]
-        public IActionResult EditarPedidos(PedidosViewModels PedidoView){
+        [Route("/Pedidos/EditarPedidos/{nro}")]
+        public IActionResult EditarPedidos(PedidosViewModels PedidoViewM ){
              if (string.IsNullOrEmpty(HttpContext.Session.GetString("name")))
             {
                 return RedirectToAction("Index", "Logging");
@@ -154,8 +155,11 @@ namespace CadeteriaWeb.Controllers
             if(ModelState.IsValid)
                 {
                     //Hacer el mapping
-                    Pedidos Pedido = _mapper.Map<Pedidos>(PedidoView);
-                    PediRepo.SubirPedido(Pedido);
+                    Pedidos Pedido = _mapper.Map<Pedidos>(PedidoViewM);
+                      
+
+                        
+                    PediRepo.ActualizarPedidos(Pedido);
                 }
 
             

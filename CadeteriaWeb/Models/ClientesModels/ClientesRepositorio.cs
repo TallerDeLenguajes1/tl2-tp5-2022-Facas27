@@ -6,7 +6,7 @@ using Microsoft.Data.Sqlite;
 
 namespace CadeteriaWeb.Models.ClientesModels
 {
-    public class ClientesRepositorio:IClientes
+    public class ClientesRepositorio:IClientesRepositorio
     {
         private List<Clientes> ListaClientes {get;set;}
          private readonly IConfiguration Configuration;
@@ -106,6 +106,33 @@ namespace CadeteriaWeb.Models.ClientesModels
                 conexion.Close();
                 return false;
             }
+        }
+        public bool ActualizarClientes(Clientes Cliente){
+            int resultado = 0;
+
+            SqliteConnection conexion = new SqliteConnection(Configuration["ConnectionStrings:Connection"]);
+            SqliteCommand comando = new();
+            conexion.Open();
+
+            try
+            {
+                comando.CommandText = "UPDATE clientes SET nombre = $nom, direccion = $direc, telefono = $tel WHERE id_cliente = $id";
+                comando.Connection = conexion;
+                comando.Parameters.AddWithValue("$nom", Cliente.Nombre);
+                comando.Parameters.AddWithValue("$direc", Cliente.Direccion);
+                comando.Parameters.AddWithValue("$tel", Cliente.Telefono);
+                comando.Parameters.AddWithValue("$id", Cliente.ID);
+                resultado = comando.ExecuteNonQuery();
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine("Ha ocurrido un error (CadeteRepo, Actualizar): " + ex.Message);
+            }
+
+            conexion.Close();
+
+            return resultado > 0;
+
         }
 
     

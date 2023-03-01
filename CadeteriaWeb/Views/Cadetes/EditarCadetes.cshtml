@@ -3,8 +3,6 @@
 
     <h3>Editor de Cadetes</h3>
 
-    <div class="card" style="width: 18rem;">
-         <div class="card-body">
         <form  method="post" ><!-- MOSTRAMOS LOS DATOS DEL CADETE Y LE PERMITIMOS CAMBIARLO -->
         <h5 class="card-title">Editar Cadete</h5>
             <label class="form-label" asp-for="@Model.Nombre"></label>
@@ -18,11 +16,13 @@
             <label class="form-label" asp-for="@Model.Telefono"></label>
             <input class="form-control" asp-for="@Model.Telefono" value="@Model.Telefono" />
             <span asp-validation-for="@Model.Telefono" class="text-danger"></span>
+
+            <button  class="btn btn-primary">Enviar</button>
         </form>
-    </div>
-</div>
 
 
 @section Scripts { 
-    @* <link href="~/css/EditorCadete.css" rel="stylesheet" asp-file-version="true" /> *@
-<partial name="_ValidationScriptsPartial" /> } 
+                  <link href="~/css/EditorCadete.css" rel="stylesheet" asp-file-version="true" />
+                  <partial name="_ValidationScriptsPartial" /> } 
+
+

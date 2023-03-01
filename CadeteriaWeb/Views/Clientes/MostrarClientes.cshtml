@@ -1,7 +1,6 @@
 
 @model List<CadeteriaWeb.Models.ClientesModels.Clientes> //NOS LLEGA UNA LISTA DE Clientes
 
-</style>
 <body>
 <table >
     <thead>
@@ -45,47 +44,5 @@
                                                                    align-items: center;
                                                                    justify-content: center;" >Refrescar </a>
 </body>
-<style>
-  table {
-  border-collapse: collapse;
-  border: 1px solid black;
-  text-align: center;
-	vertical-align: middle;
-  
-}
-
-th, td {
-  border: 1px solid black;
-  padding: 8px;
-
-}
-thead th {
-  width: 25%;
-}
-thead {
-  background-color: #333;
-  color: white;
-  font-size: 0.875rem;
-	text-transform: uppercase;
-	letter-spacing: 2%;
-}
-tbody tr:nth-child(odd) {
-  background-color: #fff;
-}
-
-tbody tr:nth-child(even) {
-  background-color: #eee;
-}
-tbody th {
-  background-color: #36c;
-  color: #fff;
-  text-align: left;
-}
-tbody tr:nth-child(even) th {
-  background-color: #25c;
-}
-main{
-  display: flex;
-  justify-content: center;
-  flex-direction: column;
-}
+@section Scripts { 
+                   <link href="~/css/Tablas.css" rel="stylesheet" asp-file-version="true" /> } 

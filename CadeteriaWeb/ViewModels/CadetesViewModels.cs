@@ -12,14 +12,14 @@ namespace CadeteriaWeb.ViewModels
 
         public int ID {get;set;}
 
-        [Required][StringLength(100)][Display(Name="Nombre del Cadete")]
+        [Required(ErrorMessage = "El Nombre es un campo obligatorio")][StringLength(100)][Display(Name="Nombre del Cadete")]
         public string Nombre{get;set;}
 
-        [Required(ErrorMessage = "La dirección es requerida")][StringLength(30,ErrorMessage = "No puede superar los 100 caracteres")][Display(Name="Direccion del Cadete")]
+        [Required(ErrorMessage = "La Direccion es un campo obligatorio")][StringLength(30,ErrorMessage = "No puede superar los 100 caracteres")][Display(Name="Direccion del Cadete")]
      
         public string Direccion {get;set;}
 
-        [Required][Phone][Display(Name="Telefono del Cadete")]
+        [Required(ErrorMessage = "El Telefono es un campo obligatorio")][Phone][Display(Name="Telefono del Cadete")]
         public string  Telefono {get;set;}
         
 

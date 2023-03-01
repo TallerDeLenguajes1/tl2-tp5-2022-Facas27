@@ -9,7 +9,9 @@
 
 <form  method="post">
     <label class="form-label" asp-for="@Model.Obs" ></label>
-    <input class="form-control" asp-for="@Model.Obs" placeholder="Observaciones acerca del pedido" /> <br />
+    <input class="form-control" asp-for="@Model.Obs" placeholder="Observaciones acerca del pedido" />
+    <span asp-validation-for="@Model.Obs" class="text-danger"></span>
+    
     <label class="form-label" asp-for="@Model.Cliente"></label>
     <select  asp-for="@Model.Cliente" >
         @foreach (var item in (List<CadeteriaWeb.Models.ClientesModels.Clientes>)ViewData["clientes"])
@@ -40,34 +42,7 @@
 
 
 
-<style>
-    body{
-        font-family:Arial, Helvetica, sans-serif;
-    }
-    h3, h5{
-        text-align: center;
-    }
-    header > h2{
-        color: white;
-        margin:0;
-    }
-    form{
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        padding: 1rem;
-        background-color: black;
-    }
-    label{
-        color: white;
-    }
-    form label, form input,form select, form button{
-        width: 90;
-        max-width:25rem ;
-        height: 2rem;
-        margin-block: .2rem;
-    }
 
-</style>
-@section Scripts { <partial name="_ValidationScriptsPartial" /> } 
+@section Scripts { <partial name="_ValidationScriptsPartial" />
+                   <link href="~/css/EditorPedidos.css" rel="stylesheet" asp-file-version="true" /> } 
 

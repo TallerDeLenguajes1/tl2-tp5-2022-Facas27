@@ -13,9 +13,9 @@ namespace CadeteriaWeb.Controllers
 {
     public class LoggingController : Controller
     {
-        private readonly IUsuario UsuarioRepo;
+        private readonly IUsuarioRepositorio UsuarioRepo;
 
-        public LoggingController(IUsuario UserRepo)
+        public LoggingController(IUsuarioRepositorio UserRepo)
         {
             UsuarioRepo = UserRepo;
         }

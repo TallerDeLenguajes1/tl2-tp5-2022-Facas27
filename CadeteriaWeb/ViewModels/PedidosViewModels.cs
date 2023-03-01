@@ -9,9 +9,9 @@ namespace CadeteriaWeb.ViewModels
 {
     public class PedidosViewModels
     {
-        public int Nro { get; private set; }
+        public int Nro { get;  set; }
 
-        [Required][StringLength(100)][Display(Name="Observaciones del Pedido")]
+        [Required (ErrorMessage = "La Observacion es un campo obligatorio")][StringLength(100)][Display(Name="Observaciones del Pedido")]
         public string Obs { get; set; }
         
         [Required][Display(Name="Nombre del Cliente ")]

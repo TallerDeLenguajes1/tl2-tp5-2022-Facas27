@@ -8,105 +8,105 @@ build_property.PlatformNeutralAssembly =
 build_property._SupportedPlatformList = Linux,macOS,Windows
 build_property.RootNamespace = CadeteriaWeb
 build_property.RootNamespace = CadeteriaWeb
-build_property.ProjectDir = C:\Repo\tl2-tp5-2022-Facas27\CadeteriaWeb\
+build_property.ProjectDir = C:\Users\facun\OneDrive\Escritorio\Proyecto Taller\tl2-tp5-2022-Facas27\CadeteriaWeb\
 build_property.RazorLangVersion = 6.0
 build_property.SupportLocalizedComponentNames = 
 build_property.GenerateRazorMetadataSourceChecksumAttributes = 
-build_property.MSBuildProjectDirectory = C:\Repo\tl2-tp5-2022-Facas27\CadeteriaWeb
+build_property.MSBuildProjectDirectory = C:\Users\facun\OneDrive\Escritorio\Proyecto Taller\tl2-tp5-2022-Facas27\CadeteriaWeb
 build_property._RazorSourceGeneratorDebug = 
 
-[C:/Repo/tl2-tp5-2022-Facas27/CadeteriaWeb/Views/Cadetes/EditarCadetes.cshtml]
+[C:/Users/facun/OneDrive/Escritorio/Proyecto Taller/tl2-tp5-2022-Facas27/CadeteriaWeb/Views/Cadetes/EditarCadetes.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQ2FkZXRlc1xFZGl0YXJDYWRldGVzLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Repo/tl2-tp5-2022-Facas27/CadeteriaWeb/Views/Cadetes/FormAlta.cshtml]
+[C:/Users/facun/OneDrive/Escritorio/Proyecto Taller/tl2-tp5-2022-Facas27/CadeteriaWeb/Views/Cadetes/FormAlta.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQ2FkZXRlc1xGb3JtQWx0YS5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Repo/tl2-tp5-2022-Facas27/CadeteriaWeb/Views/Cadetes/Index.cshtml]
+[C:/Users/facun/OneDrive/Escritorio/Proyecto Taller/tl2-tp5-2022-Facas27/CadeteriaWeb/Views/Cadetes/Index.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQ2FkZXRlc1xJbmRleC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Repo/tl2-tp5-2022-Facas27/CadeteriaWeb/Views/Cadetes/MostrarCadetes.cshtml]
+[C:/Users/facun/OneDrive/Escritorio/Proyecto Taller/tl2-tp5-2022-Facas27/CadeteriaWeb/Views/Cadetes/MostrarCadetes.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQ2FkZXRlc1xNb3N0cmFyQ2FkZXRlcy5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Repo/tl2-tp5-2022-Facas27/CadeteriaWeb/Views/Clientes/EditarClientes.cshtml]
+[C:/Users/facun/OneDrive/Escritorio/Proyecto Taller/tl2-tp5-2022-Facas27/CadeteriaWeb/Views/Clientes/EditarClientes.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQ2xpZW50ZXNcRWRpdGFyQ2xpZW50ZXMuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Repo/tl2-tp5-2022-Facas27/CadeteriaWeb/Views/Clientes/Index.cshtml]
+[C:/Users/facun/OneDrive/Escritorio/Proyecto Taller/tl2-tp5-2022-Facas27/CadeteriaWeb/Views/Clientes/Index.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQ2xpZW50ZXNcSW5kZXguY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Repo/tl2-tp5-2022-Facas27/CadeteriaWeb/Views/Clientes/MostrarClientes.cshtml]
+[C:/Users/facun/OneDrive/Escritorio/Proyecto Taller/tl2-tp5-2022-Facas27/CadeteriaWeb/Views/Clientes/MostrarClientes.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQ2xpZW50ZXNcTW9zdHJhckNsaWVudGVzLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Repo/tl2-tp5-2022-Facas27/CadeteriaWeb/Views/Clientes/SubirClientes.cshtml]
+[C:/Users/facun/OneDrive/Escritorio/Proyecto Taller/tl2-tp5-2022-Facas27/CadeteriaWeb/Views/Clientes/SubirClientes.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQ2xpZW50ZXNcU3ViaXJDbGllbnRlcy5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Repo/tl2-tp5-2022-Facas27/CadeteriaWeb/Views/Home/Index.cshtml]
+[C:/Users/facun/OneDrive/Escritorio/Proyecto Taller/tl2-tp5-2022-Facas27/CadeteriaWeb/Views/Home/Index.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxJbmRleC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Repo/tl2-tp5-2022-Facas27/CadeteriaWeb/Views/Home/Privacy.cshtml]
+[C:/Users/facun/OneDrive/Escritorio/Proyecto Taller/tl2-tp5-2022-Facas27/CadeteriaWeb/Views/Home/Privacy.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxQcml2YWN5LmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Repo/tl2-tp5-2022-Facas27/CadeteriaWeb/Views/Logging/Error.cshtml]
+[C:/Users/facun/OneDrive/Escritorio/Proyecto Taller/tl2-tp5-2022-Facas27/CadeteriaWeb/Views/Logging/Error.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcTG9nZ2luZ1xFcnJvci5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Repo/tl2-tp5-2022-Facas27/CadeteriaWeb/Views/Logging/Index.cshtml]
+[C:/Users/facun/OneDrive/Escritorio/Proyecto Taller/tl2-tp5-2022-Facas27/CadeteriaWeb/Views/Logging/Index.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcTG9nZ2luZ1xJbmRleC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Repo/tl2-tp5-2022-Facas27/CadeteriaWeb/Views/Pedidos/EditarPedidos.cshtml]
+[C:/Users/facun/OneDrive/Escritorio/Proyecto Taller/tl2-tp5-2022-Facas27/CadeteriaWeb/Views/Pedidos/EditarPedidos.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUGVkaWRvc1xFZGl0YXJQZWRpZG9zLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Repo/tl2-tp5-2022-Facas27/CadeteriaWeb/Views/Pedidos/FormAlta.cshtml]
+[C:/Users/facun/OneDrive/Escritorio/Proyecto Taller/tl2-tp5-2022-Facas27/CadeteriaWeb/Views/Pedidos/FormAlta.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUGVkaWRvc1xGb3JtQWx0YS5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Repo/tl2-tp5-2022-Facas27/CadeteriaWeb/Views/Pedidos/Index.cshtml]
+[C:/Users/facun/OneDrive/Escritorio/Proyecto Taller/tl2-tp5-2022-Facas27/CadeteriaWeb/Views/Pedidos/Index.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUGVkaWRvc1xJbmRleC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Repo/tl2-tp5-2022-Facas27/CadeteriaWeb/Views/Pedidos/MostrarPedidos.cshtml]
+[C:/Users/facun/OneDrive/Escritorio/Proyecto Taller/tl2-tp5-2022-Facas27/CadeteriaWeb/Views/Pedidos/MostrarPedidos.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUGVkaWRvc1xNb3N0cmFyUGVkaWRvcy5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Repo/tl2-tp5-2022-Facas27/CadeteriaWeb/Views/Shared/Error.cshtml]
+[C:/Users/facun/OneDrive/Escritorio/Proyecto Taller/tl2-tp5-2022-Facas27/CadeteriaWeb/Views/Shared/Error.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXEVycm9yLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Repo/tl2-tp5-2022-Facas27/CadeteriaWeb/Views/Shared/_LayoutCadetes.cshtml]
+[C:/Users/facun/OneDrive/Escritorio/Proyecto Taller/tl2-tp5-2022-Facas27/CadeteriaWeb/Views/Shared/_LayoutCadetes.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF9MYXlvdXRDYWRldGVzLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Repo/tl2-tp5-2022-Facas27/CadeteriaWeb/Views/Shared/_LayoutClientes.cshtml]
+[C:/Users/facun/OneDrive/Escritorio/Proyecto Taller/tl2-tp5-2022-Facas27/CadeteriaWeb/Views/Shared/_LayoutClientes.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF9MYXlvdXRDbGllbnRlcy5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Repo/tl2-tp5-2022-Facas27/CadeteriaWeb/Views/Shared/_LayoutPedidos.cshtml]
+[C:/Users/facun/OneDrive/Escritorio/Proyecto Taller/tl2-tp5-2022-Facas27/CadeteriaWeb/Views/Shared/_LayoutPedidos.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF9MYXlvdXRQZWRpZG9zLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Repo/tl2-tp5-2022-Facas27/CadeteriaWeb/Views/Shared/_ValidationScriptsPartial.cshtml]
+[C:/Users/facun/OneDrive/Escritorio/Proyecto Taller/tl2-tp5-2022-Facas27/CadeteriaWeb/Views/Shared/_ValidationScriptsPartial.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF9WYWxpZGF0aW9uU2NyaXB0c1BhcnRpYWwuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Repo/tl2-tp5-2022-Facas27/CadeteriaWeb/Views/_ViewImports.cshtml]
+[C:/Users/facun/OneDrive/Escritorio/Proyecto Taller/tl2-tp5-2022-Facas27/CadeteriaWeb/Views/_ViewImports.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcX1ZpZXdJbXBvcnRzLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Repo/tl2-tp5-2022-Facas27/CadeteriaWeb/Views/_ViewStart.cshtml]
+[C:/Users/facun/OneDrive/Escritorio/Proyecto Taller/tl2-tp5-2022-Facas27/CadeteriaWeb/Views/_ViewStart.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcX1ZpZXdTdGFydC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Repo/tl2-tp5-2022-Facas27/CadeteriaWeb/Views/Shared/_Layout.cshtml]
+[C:/Users/facun/OneDrive/Escritorio/Proyecto Taller/tl2-tp5-2022-Facas27/CadeteriaWeb/Views/Shared/_Layout.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF9MYXlvdXQuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = b-18sqgtc0t2

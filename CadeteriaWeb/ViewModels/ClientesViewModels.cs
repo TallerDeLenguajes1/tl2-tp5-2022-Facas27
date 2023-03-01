@@ -12,13 +12,13 @@ namespace CadeteriaWeb.ViewModels
 
         public int ID {get;set;}
 
-        [Required][StringLength(100)][Display(Name="Nombre del Cliente")]
+        [Required (ErrorMessage = "El Nombre es un campo obligatorio")][StringLength(100)][Display(Name="Nombre del Cliente")]
         public string Nombre{get;set;}
 
-        [Required][StringLength(100)][Display(Name="Direccion del Cliente")]
+        [Required(ErrorMessage = "La direccion es un campo obligatorio")][StringLength(100)][Display(Name="Direccion del Cliente")]
         public string Direccion {get;set;}
 
-        [Required][Phone][Display(Name="Telefono del Cliente")]
+        [Required (ErrorMessage = "La direccion es un campo obligatorio")][Phone][Display(Name="Telefono del Cliente")]
         public string  Telefono {get;set;}
 
         public ClientesViewModels(){}

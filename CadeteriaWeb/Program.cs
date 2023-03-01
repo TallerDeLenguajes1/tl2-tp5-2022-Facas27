@@ -9,10 +9,10 @@ var automapper = new MapperConfiguration(item => item.AddProfile(new CadeteriaWe
 IMapper mapper = automapper.CreateMapper();
 
 //CREANDO LAS DEPENDECIAS
-builder.Services.AddTransient<CadeteriaWeb.Models.CadetesModels.ICadetes, CadeteriaWeb.Models.CadetesModels.CadetesRepositorio>();
-builder.Services.AddTransient<CadeteriaWeb.Models.PedidosModels.IPedidos, CadeteriaWeb.Models.PedidosModels.PedidosRepositorio>();
-builder.Services.AddTransient<CadeteriaWeb.Models.ClientesModels.IClientes, CadeteriaWeb.Models.ClientesModels.ClientesRepositorio>();
-builder.Services.AddTransient<CadeteriaWeb.Models.UsuarioModels.IUsuario, CadeteriaWeb.Models.UsuarioModels.UsuarioRepositorio>();
+builder.Services.AddTransient<CadeteriaWeb.Models.CadetesModels.ICadetesRepositorio, CadeteriaWeb.Models.CadetesModels.CadetesRepositorio>();
+builder.Services.AddTransient<CadeteriaWeb.Models.PedidosModels.IPedidosRepositorio, CadeteriaWeb.Models.PedidosModels.PedidosRepositorio>();
+builder.Services.AddTransient<CadeteriaWeb.Models.ClientesModels.IClientesRepositorio, CadeteriaWeb.Models.ClientesModels.ClientesRepositorio>();
+builder.Services.AddTransient<CadeteriaWeb.Models.UsuarioModels.IUsuarioRepositorio, CadeteriaWeb.Models.UsuarioModels.UsuarioRepositorio>();
 
 builder.Services.AddSingleton(mapper);
 builder.Services.AddDistributedMemoryCache();

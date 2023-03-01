@@ -18,11 +18,11 @@ namespace CadeteriaWeb.Controllers
     {
         private readonly ILogger<PedidosController> _logger;
         private readonly IMapper _mapper;
-        private readonly IPedidos PediRepo;
-        private readonly IClientes ClienteRepo;
-        private readonly ICadetes CadeRepo;
+        private readonly IPedidosRepositorio PediRepo;
+        private readonly IClientesRepositorio ClienteRepo;
+        private readonly ICadetesRepositorio CadeRepo;
 
-        public ClientesController(ILogger<PedidosController> logger, IMapper mapper, IPedidos pediRepo, IClientes clienterepo, ICadetes caderepo)
+        public ClientesController(ILogger<PedidosController> logger, IMapper mapper, IPedidosRepositorio pediRepo, IClientesRepositorio clienterepo, ICadetesRepositorio caderepo)
         {
             _logger = logger;
             _mapper = mapper;
@@ -118,7 +118,6 @@ namespace CadeteriaWeb.Controllers
                 return RedirectToAction("Index", "Home");
             }
             Clientes cliente = ClienteRepo.ClientePorID(Int32.Parse(id));
-            ClienteRepo.EliminarClientes(id);
             ClientesViewModels ClienteViewM = _mapper.Map<ClientesViewModels>(cliente);
 
             return View(ClienteViewM);  
@@ -139,7 +138,7 @@ namespace CadeteriaWeb.Controllers
                 {
                     //Hacer el mapping
                     Clientes cliente = _mapper.Map<Clientes>(ClienteView);
-                    ClienteRepo.SubirClientes(cliente);
+                    ClienteRepo.ActualizarClientes(cliente);
                 }
 
             return View("Index");

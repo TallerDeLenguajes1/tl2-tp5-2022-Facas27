@@ -7,7 +7,7 @@ using Microsoft.Data.Sqlite;
 
 namespace CadeteriaWeb.Models.UsuarioModels
 {
-    public class UsuarioRepositorio:IUsuario
+    public class UsuarioRepositorio:IUsuarioRepositorio
     {
        private readonly IConfiguration Configuration;
 
